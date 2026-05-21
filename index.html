@@ -108,7 +108,7 @@
       }
     </script>
 
-    <link rel="preload" as="image" href="/_vercel/image?url=%2FImages%2Fhero_001.jpg&w=1920&q=82" />
+    <link rel="preload" as="image" href="Images/hero_001.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -1533,51 +1533,51 @@
         <div class="hero-bg" id="heroBg">
           <div
             class="hero-slide active"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_001.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_001.jpg')"
           ></div>
           <div
             class="hero-slide"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_002.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_002.jpg')"
           ></div>
           <div
             class="hero-slide"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_003.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_003.jpg')"
           ></div>
           <div
             class="hero-slide"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_004.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_004.jpg')"
           ></div>
           <div
             class="hero-slide"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_005.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_005.jpg')"
           ></div>
           <div
             class="hero-slide"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_006.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_006.jpg')"
           ></div>
           <div
             class="hero-slide"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_007.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_007.jpg')"
           ></div>
           <div
             class="hero-slide"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_008.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_008.jpg')"
           ></div>
           <div
             class="hero-slide"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_009.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_009.jpg')"
           ></div>
           <div
             class="hero-slide"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_0010.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_0010.jpg')"
           ></div>
           <div
             class="hero-slide"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_0011.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_0011.jpg')"
           ></div>
           <div
             class="hero-slide"
-            style="background-image: url('/_vercel/image?url=%2FImages%2Fhero_0012.jpg&w=1920&q=82')"
+            style="background-image: url('Images/hero_0012.jpg')"
           ></div>
         </div>
         <div class="hero-ov"></div>
@@ -2070,7 +2070,7 @@
             >
               <div class="sc-img">
                 <img
-                  src="/_vercel/image?url=%2FImages%2Fhero_001.jpg&w=600&q=80"
+                  src="Images/hero_001.jpg"
                   alt="Perspectivas"
                   loading="lazy"
                 />
@@ -2090,7 +2090,7 @@
               tabindex="0"
             >
               <div class="sc-img">
-                <img src="/_vercel/image?url=%2FImages%2Fhero_002.jpg&w=600&q=80" alt="Filmes" loading="lazy" />
+                <img src="Images/hero_002.jpg" alt="Filmes" loading="lazy" />
               </div>
               <h3 class="sc-name">Filmes</h3>
               <p class="sc-desc">
@@ -2108,7 +2108,7 @@
             >
               <div class="sc-img">
                 <img
-                  src="/_vercel/image?url=%2FImages%2Fhero_003.jpg&w=600&q=80"
+                  src="Images/hero_003.jpg"
                   alt="Plantas Isométricas"
                   loading="lazy"
                 />
@@ -2129,7 +2129,7 @@
             >
               <div class="sc-img">
                 <img
-                  src="/_vercel/image?url=%2FImages%2Fhero_004.jpg&w=600&q=80"
+                  src="Images/hero_004.jpg"
                   alt="Tour Virtual 360º"
                   loading="lazy"
                 />
@@ -2150,7 +2150,7 @@
             >
               <div class="sc-img">
                 <img
-                  src="/_vercel/image?url=%2FImages%2Fhero_005.jpg&w=600&q=80"
+                  src="Images/hero_005.jpg"
                   alt="Plataforma Interativa"
                   loading="lazy"
                 />
@@ -2702,16 +2702,6 @@
             btn.disabled = false;
           }, 4000);
         }
-      }
-
-      // VERCEL IMAGE OPTIMIZATION — portfolio grid (lazy-loaded, safe to rewrite before viewport)
-      if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-        document.querySelectorAll('.pi img').forEach(function(img) {
-          var s = img.getAttribute('src');
-          if (s && s.startsWith('Images/')) {
-            img.setAttribute('src', '/_vercel/image?url=' + encodeURIComponent('/' + s) + '&w=800&q=80');
-          }
-        });
       }
 
       // LIGHTBOX
