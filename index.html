@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
+    <meta name="geo.region" content="BR-PR" />
+    <meta name="geo.placename" content="Curitiba" />
     <title>Eleve 3D — Estúdio de Visualização Arquitetônica 3D | Brasil</title>
     <meta
       name="description"
@@ -105,6 +108,7 @@
       }
     </script>
 
+    <link rel="preload" as="image" href="Images/hero_001.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -643,49 +647,6 @@
         display: block;
       }
 
-      /* SOBRE NÓS */
-      .sobre-grid {
-        display: grid;
-        grid-template-columns: 1fr 1.6fr;
-        gap: 5rem;
-        align-items: start;
-      }
-      .sobre-texto {
-        display: flex;
-        flex-direction: column;
-        gap: 1.4rem;
-      }
-      .sobre-texto p {
-        font-size: 1.05rem;
-        line-height: 1.8;
-        color: #2a2a2a;
-      }
-      .sobre-grid .sec-title,
-      .sobre-grid .sec-title em {
-        color: #1a1a1a;
-      }
-      .sobre-grid .sec-label {
-        color: #3a3a3a;
-      }
-      #about .sec-title {
-        color: #444;
-      }
-      #about .sec-label {
-        color: #555;
-      }
-      #about .ab-stat-n {
-        color: var(--fg);
-      }
-      #about .sec-title em {
-        color: var(--fg);
-      }
-      @media (max-width: 860px) {
-        .sobre-grid {
-          grid-template-columns: 1fr;
-          gap: 2.5rem;
-        }
-      }
-
       /* PORTFOLIO */
       .port-header {
         display: flex;
@@ -785,10 +746,6 @@
         font-size: 1.3rem;
         font-weight: 600;
       }
-      .pi-cap {
-        display: none;
-      }
-
       /* SERVICES */
       .srv-header {
         display: flex;
@@ -874,9 +831,9 @@
         border-color: var(--yellow);
         color: #000;
       }
+      .sc-card[data-filter] { cursor: pointer; }
 
-      /* ABOUT */
-      /* ABOUT REDESIGN */
+      /* ABOUT / STUDIO */
       .ab2-wrap {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -1404,13 +1361,6 @@
         .pi:nth-child(8) {
           grid-column: span 2;
         }
-        .about-grid {
-          grid-template-columns: 1fr;
-          gap: 3.5rem;
-        }
-        .ab-badge {
-          left: 1rem;
-        }
       }
       @media (max-width: 860px) {
         nav {
@@ -1489,9 +1439,6 @@
           flex-direction: column;
           align-items: flex-start;
         }
-        .ab-stats {
-          grid-template-columns: 1fr 1fr;
-        }
       }
     </style>
   </head>
@@ -1527,7 +1474,7 @@
     </div>
 
     <!-- NAV -->
-    <nav id="nav">
+    <nav id="nav" aria-label="Navegação principal">
       <a href="#home" class="nav-logo">ELEVE <em>3D</em></a>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
@@ -1547,18 +1494,18 @@
       <!-- HERO -->
       <section id="home" class="hero">
         <div class="hero-bg" id="heroBg">
-          <div class="hero-slide active" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_001.jpg')"></div>
-          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_002.jpg')"></div>
-          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_003.jpg')"></div>
-          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_004.jpg')"></div>
-          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_005.jpg')"></div>
-          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_006.jpg')"></div>
-          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_007.jpg')"></div>
-          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_008.jpg')"></div>
-          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_009.jpg')"></div>
-          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_0010.jpg')"></div>
-          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_0011.jpg')"></div>
-          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_0012.jpg')"></div>
+          <div class="hero-slide active" style="background-image:url('Images/hero_001.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('Images/hero_002.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('Images/hero_003.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('Images/hero_004.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('Images/hero_005.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('Images/hero_006.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('Images/hero_007.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('Images/hero_008.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('Images/hero_009.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('Images/hero_0010.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('Images/hero_0011.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('Images/hero_0012.jpg')"></div>
         </div>
         <div class="hero-ov"></div>
         <div class="hero-c">
@@ -1610,7 +1557,7 @@
           <!-- Coluna foto -->
           <div class="ab2-img rev">
             <img
-              src="images/bruno.png"
+              src="Images/bruno.png"
               alt="Equipe do Eleve 3D Studio trabalhando em projeto de visualização arquitetônica"
             />
           </div>
@@ -1669,55 +1616,55 @@
           </div>
         </div>
         <div class="port-grid">
-          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid0.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid1.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="filmes"><img loading="lazy" src="images/Grid2.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="plantas"><img loading="lazy" src="images/Grid3.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="tour"><img loading="lazy" src="images/Grid4.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="plataforma"><img loading="lazy" src="images/Grid5.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="images/Grid6.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="images/Grid7.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="filmes"><img loading="lazy" src="images/Grid8.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="plantas"><img loading="lazy" src="images/Grid9.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="tour"><img loading="lazy" src="images/Grid10.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="plataforma"><img loading="lazy" src="images/Grid11.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid12.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid13.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="filmes"><img loading="lazy" src="images/Grid14.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="plantas"><img loading="lazy" src="images/Grid15.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="tour"><img loading="lazy" src="images/Grid16.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="plataforma"><img loading="lazy" src="images/Grid17.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="images/Grid18.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="filmes"><img loading="lazy" src="images/Grid19.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="plantas"><img loading="lazy" src="images/Grid20.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="tour"><img loading="lazy" src="images/Grid21.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="plataforma"><img loading="lazy" src="images/Grid22.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="images/Grid23.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid24.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="filmes"><img loading="lazy" src="images/Grid25.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="plantas"><img loading="lazy" src="images/Grid26.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="tour"><img loading="lazy" src="images/Grid27.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="plataforma"><img loading="lazy" src="images/Grid28.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid29.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="images/Grid30.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="filmes"><img loading="lazy" src="images/Grid31.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="plantas"><img loading="lazy" src="images/Grid32.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="tour"><img loading="lazy" src="images/Grid33.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="plataforma"><img loading="lazy" src="images/Grid34.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="images/Grid35.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="filmes"><img loading="lazy" src="images/Grid36.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="plantas"><img loading="lazy" src="images/Grid37.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="tour"><img loading="lazy" src="images/Grid38.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="plataforma"><img loading="lazy" src="images/Grid39.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid40.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="filmes"><img loading="lazy" src="images/Grid41.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="plantas"><img loading="lazy" src="images/Grid42.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="tour"><img loading="lazy" src="images/Grid43.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="plataforma"><img loading="lazy" src="images/Grid44.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
-          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid45.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d2" data-cat="filmes"><img loading="lazy" src="images/Grid46.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev d3" data-cat="plantas"><img loading="lazy" src="images/Grid47.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
-          <div class="pi rev" data-cat="tour"><img loading="lazy" src="images/Grid48.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="Images/Grid0.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="Images/Grid1.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="filmes"><img loading="lazy" src="Images/Grid2.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="plantas"><img loading="lazy" src="Images/Grid3.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="tour"><img loading="lazy" src="Images/Grid4.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="plataforma"><img loading="lazy" src="Images/Grid5.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="Images/Grid6.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="Images/Grid7.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="filmes"><img loading="lazy" src="Images/Grid8.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="plantas"><img loading="lazy" src="Images/Grid9.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="tour"><img loading="lazy" src="Images/Grid10.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="plataforma"><img loading="lazy" src="Images/Grid11.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="Images/Grid12.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="Images/Grid13.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="filmes"><img loading="lazy" src="Images/Grid14.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="plantas"><img loading="lazy" src="Images/Grid15.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="tour"><img loading="lazy" src="Images/Grid16.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="plataforma"><img loading="lazy" src="Images/Grid17.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="Images/Grid18.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="filmes"><img loading="lazy" src="Images/Grid19.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="plantas"><img loading="lazy" src="Images/Grid20.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="tour"><img loading="lazy" src="Images/Grid21.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="plataforma"><img loading="lazy" src="Images/Grid22.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="Images/Grid23.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="Images/Grid24.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="filmes"><img loading="lazy" src="Images/Grid25.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="plantas"><img loading="lazy" src="Images/Grid26.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="tour"><img loading="lazy" src="Images/Grid27.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="plataforma"><img loading="lazy" src="Images/Grid28.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="Images/Grid29.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="Images/Grid30.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="filmes"><img loading="lazy" src="Images/Grid31.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="plantas"><img loading="lazy" src="Images/Grid32.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="tour"><img loading="lazy" src="Images/Grid33.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="plataforma"><img loading="lazy" src="Images/Grid34.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="Images/Grid35.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="filmes"><img loading="lazy" src="Images/Grid36.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="plantas"><img loading="lazy" src="Images/Grid37.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="tour"><img loading="lazy" src="Images/Grid38.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="plataforma"><img loading="lazy" src="Images/Grid39.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="Images/Grid40.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="filmes"><img loading="lazy" src="Images/Grid41.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="plantas"><img loading="lazy" src="Images/Grid42.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="tour"><img loading="lazy" src="Images/Grid43.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="plataforma"><img loading="lazy" src="Images/Grid44.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="Images/Grid45.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="filmes"><img loading="lazy" src="Images/Grid46.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="plantas"><img loading="lazy" src="Images/Grid47.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="tour"><img loading="lazy" src="Images/Grid48.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
         </div>
       </section>
 
@@ -1734,8 +1681,8 @@
             </div>
           </div>
           <div class="srv-grid">
-            <div class="sc-card rev" data-filter="perspectivas" role="button" tabindex="0" style="cursor:pointer">
-              <div class="sc-img"><img src="images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_001.jpg" alt="Perspectivas" loading="lazy" /></div>
+            <div class="sc-card rev" data-filter="perspectivas" role="button" tabindex="0">
+              <div class="sc-img"><img src="Images/hero_001.jpg" alt="Perspectivas" loading="lazy" /></div>
               <h3 class="sc-name">Perspectivas</h3>
               <p class="sc-desc">
                 As perspectivas arquitetônicas são imagens renderizadas que
@@ -1744,8 +1691,8 @@
               </p>
               <span class="sc-btn">Confira →</span>
             </div>
-            <div class="sc-card rev d1" data-filter="filmes" role="button" tabindex="0" style="cursor:pointer">
-              <div class="sc-img"><img src="images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_002.jpg" alt="Filmes" loading="lazy" /></div>
+            <div class="sc-card rev d1" data-filter="filmes" role="button" tabindex="0">
+              <div class="sc-img"><img src="Images/hero_002.jpg" alt="Filmes" loading="lazy" /></div>
               <h3 class="sc-name">Filmes</h3>
               <p class="sc-desc">
                 Animações cinematográficas para empreendimentos imobiliários e
@@ -1754,8 +1701,8 @@
               </p>
               <span class="sc-btn">Confira →</span>
             </div>
-            <div class="sc-card rev d2" data-filter="plantas" role="button" tabindex="0" style="cursor:pointer">
-              <div class="sc-img"><img src="images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_003.jpg" alt="Plantas Isométricas" loading="lazy" /></div>
+            <div class="sc-card rev d2" data-filter="plantas" role="button" tabindex="0">
+              <div class="sc-img"><img src="Images/hero_003.jpg" alt="Plantas Isométricas" loading="lazy" /></div>
               <h3 class="sc-name">Plantas Isométricas</h3>
               <p class="sc-desc">
                 As plantas isométricas, ou plantas em perspectiva, apresentam o
@@ -1764,8 +1711,8 @@
               </p>
               <span class="sc-btn">Confira →</span>
             </div>
-            <div class="sc-card rev d3" data-filter="tour" role="button" tabindex="0" style="cursor:pointer">
-              <div class="sc-img"><img src="images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_004.jpg" alt="Tour Virtual 360º" loading="lazy" /></div>
+            <div class="sc-card rev d3" data-filter="tour" role="button" tabindex="0">
+              <div class="sc-img"><img src="Images/hero_004.jpg" alt="Tour Virtual 360º" loading="lazy" /></div>
               <h3 class="sc-name">Tour Virtual 360º</h3>
               <p class="sc-desc">
                 Também oferecemos o Tour Virtual, uma solução imersiva que
@@ -1774,8 +1721,8 @@
               </p>
               <span class="sc-btn">Confira →</span>
             </div>
-            <div class="sc-card rev d4" data-filter="plataforma" role="button" tabindex="0" style="cursor:pointer">
-              <div class="sc-img"><img src="images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_005.jpg" alt="Plataforma Interativa" loading="lazy" /></div>
+            <div class="sc-card rev d4" data-filter="plataforma" role="button" tabindex="0">
+              <div class="sc-img"><img src="Images/hero_005.jpg" alt="Plataforma Interativa" loading="lazy" /></div>
               <h3 class="sc-name">Plataforma Interativa</h3>
               <p class="sc-desc">
                 Ambiente digital completo para apresentação de empreendimentos — Tour 360º, galeria, plantas e informações integradas em uma única experiência imersiva.
@@ -1880,6 +1827,7 @@
                   href="https://wa.me/554134940227"
                   class="con-item"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <div class="con-icon">
                     <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1915,7 +1863,7 @@
                   href="https://www.instagram.com/eleve3d/?hl=pt-br"
                   class="con-item"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                 >
                   <div class="con-icon">
                     <svg
@@ -1937,26 +1885,30 @@
               </div>
             </div>
             <div class="rev d2">
-              <form class="cf" onsubmit="submitForm(event)">
+              <form class="cf" onsubmit="submitForm(event)" novalidate>
+                <!-- honeypot anti-spam -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
                 <div class="f-row">
                   <div class="fg-group">
-                    <label>Nome</label
-                    ><input type="text" name="nome" placeholder="Seu nome" required />
+                    <label for="f-nome">Nome</label>
+                    <input type="text" id="f-nome" name="nome" autocomplete="name" placeholder="Seu nome" required />
                   </div>
                   <div class="fg-group">
-                    <label>Telefone</label
-                    ><input type="tel" name="telefone" placeholder="(11) 99999-9999" />
+                    <label for="f-tel">Telefone</label>
+                    <input type="tel" id="f-tel" name="telefone" autocomplete="tel" placeholder="(41) 99999-9999" />
                   </div>
                 </div>
                 <div class="fg-group">
-                  <label>E-mail</label
-                  ><input type="email" name="email" placeholder="seu@email.com" required />
+                  <label for="f-email">E-mail</label>
+                  <input type="email" id="f-email" name="email" autocomplete="email" placeholder="seu@email.com" required />
                 </div>
                 <div class="fg-group">
-                  <label>Projeto</label
-                  ><textarea
+                  <label for="f-projeto">Projeto</label>
+                  <textarea
+                    id="f-projeto"
                     name="projeto"
                     rows="5"
+                    autocomplete="off"
                     placeholder="Conte sobre seu projeto, localização, área, prazo..."
                     required
                   ></textarea>
@@ -2017,7 +1969,7 @@
                 >
               </li>
               <li><a href="https://wa.me/554134940227">WhatsApp</a></li>
-              <li><a href="#">Curitiba, PR — Brasil</a></li>
+              <li><span style="font-size:0.88rem;color:var(--fg2)">Curitiba, PR — Brasil</span></li>
             </ul>
           </div>
         </div>
@@ -2031,7 +1983,7 @@
               class="soc"
               aria-label="Instagram"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               ><svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -2053,7 +2005,7 @@
               class="soc"
               aria-label="Facebook"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               ><svg
                 viewBox="0 0 24 24"
                 fill="none"
