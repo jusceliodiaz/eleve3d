@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eleve 3D — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f5f5;
+      --surface: #ffffff;
+      --surface2: #f0f0f0;
+      --border: #e0e0e0;
+      --text: #1a1a1a;
+      --text2: #666;
+      --accent: #f5a623;
+      --accent-dark: #d4891a;
+      --danger: #e53e3e;
+      --success: #38a169;
+      --sidebar: #1a1a1a;
+      --sidebar-text: #ccc;
+      --sidebar-active: #f5a623;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── LOGIN ── */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    }
+
+    .login-box {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 3rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    }
+
+    .login-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.25rem;
+      color: #1a1a1a;
+    }
+
+    .login-logo span { color: #f5a623; }
+
+    .login-sub {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .login-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 0.4rem;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .login-input:focus { border-color: #f5a623; }
+
+    .login-btn {
+      width: 100%;
+      padding: 0.85rem;
+      background: #f5a623;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .login-btn:hover { background: #d4891a; }
+
+    .login-error {
+      color: #e53e3e;
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    /* ── DASHBOARD LAYOUT ── */
+    #dashboard {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .dash-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: var(--sidebar);
+      color: var(--sidebar-text);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      padding: 1.75rem 1.5rem 1.25rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .sidebar-logo span { color: #f5a623; }
+
+    .sidebar-label {
+      padding: 1.25rem 1.5rem 0.5rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 1.5rem;
+      font-size: 0.85rem;
+      color: var(--sidebar-text);
+      cursor: pointer;
+      border-radius: 0;
+      transition: background 0.15s, color 0.15s;
+      border-left: 3px solid transparent;
+    }
+
+    .sidebar-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+
+    .sidebar-item.active {
+      background: rgba(245,166,35,0.12);
+      color: var(--sidebar-active);
+      border-left-color: var(--sidebar-active);
+    }
+
+    .sidebar-icon { font-size: 1rem; width: 18px; text-align: center; }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logout-btn {
+      width: 100%;
+      padding: 0.6rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 0.4rem;
+      color: #999;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .logout-btn:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+    /* Main content */
+    .dash-main {
+      margin-left: 240px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dash-topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .dash-topbar-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .dash-topbar-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-export {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.2rem;
+      background: #f5a623;
+      color: #fff;
+      border: none;
+      border-radius: 0.4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-export:hover { background: #d4891a; }
+
+    .btn-save {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.2rem;
+      background: var(--text);
+      color: #fff;
+      border: none;
+      border-radius: 0.4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-save:hover { background: #333; }
+
+    .save-toast {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--success);
+      font-weight: 500;
+    }
+
+    /* Sections */
+    .dash-content {
+      padding: 2rem;
+      flex: 1;
+    }
+
+    .dash-section { display: none; }
+    .dash-section.active { display: block; }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-desc {
+      font-size: 0.85rem;
+      color: var(--text2);
+      margin-bottom: 2rem;
+    }
+
+    /* Cards */
+    .edit-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .edit-card-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edit-card-title span {
+      background: #f5a623;
+      color: #fff;
+      padding: 0.15rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.6rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .field-row.full { grid-template-columns: 1fr; }
+
+    .field-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .field-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #555;
+      letter-spacing: 0.04em;
+    }
+
+    .field-hint {
+      font-size: 0.68rem;
+      color: #aaa;
+      margin-top: -0.2rem;
+    }
+
+    .field-input,
+    .field-textarea {
+      padding: 0.6rem 0.85rem;
+      border: 1.5px solid var(--border);
+      border-radius: 0.4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      background: #fafafa;
+    }
+
+    .field-input:focus,
+    .field-textarea:focus { border-color: #f5a623; background: #fff; }
+
+    .field-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+
+    /* Info banner */
+    .info-banner {
+      background: #fffbf0;
+      border: 1px solid #f5a623;
+      border-radius: 0.6rem;
+      padding: 1rem 1.25rem;
+      font-size: 0.82rem;
+      color: #7a5200;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+
+    .info-banner-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════ LOGIN ════════════════════ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">ELEVE <span>3D</span></div>
+    <div class="login-sub">PAINEL DE ADMINISTRAÇÃO</div>
+    <label class="login-label" for="l-email">E-mail</label>
+    <input class="login-input" type="email" id="l-email" placeholder="seu@email.com" />
+    <label class="login-label" for="l-pass">Senha</label>
+    <input class="login-input" type="password" id="l-pass" placeholder="••••••••" />
+    <button class="login-btn" onclick="doLogin()">Entrar</button>
+    <div class="login-error" id="login-error">E-mail ou senha incorretos.</div>
+  </div>
+</div>
+
+<!-- ════════════════════ DASHBOARD ════════════════════ -->
+<div id="dashboard">
+  <div class="dash-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">ELEVE <span>3D</span></div>
+      <div class="sidebar-label">Seções do Site</div>
+      <div class="sidebar-item active" onclick="showSection('hero', this)">
+        <span class="sidebar-icon">🏠</span> Hero
+      </div>
+      <div class="sidebar-item" onclick="showSection('stats', this)">
+        <span class="sidebar-icon">📊</span> Números
+      </div>
+      <div class="sidebar-item" onclick="showSection('studio', this)">
+        <span class="sidebar-icon">🏢</span> Studio
+      </div>
+      <div class="sidebar-item" onclick="showSection('services', this)">
+        <span class="sidebar-icon">⚡</span> Serviços
+      </div>
+      <div class="sidebar-item" onclick="showSection('testimonials', this)">
+        <span class="sidebar-icon">💬</span> Depoimentos
+      </div>
+      <div class="sidebar-item" onclick="showSection('contact', this)">
+        <span class="sidebar-icon">📩</span> Contato
+      </div>
+      <div class="sidebar-footer">
+        <button class="logout-btn" onclick="doLogout()">Sair da conta</button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="dash-main">
+
+      <!-- TOPBAR -->
+      <div class="dash-topbar">
+        <div class="dash-topbar-title" id="topbar-title">Hero</div>
+        <div class="dash-topbar-actions">
+          <div class="save-toast" id="save-toast">✓ Salvo com sucesso</div>
+          <button class="btn-save" onclick="saveData()">💾 Salvar</button>
+          <button class="btn-export" onclick="exportJSON()">⬇ Exportar JSON</button>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="dash-content">
+
+        <div class="info-banner">
+          <span class="info-banner-icon">💡</span>
+          <div>
+            <strong>Como funciona:</strong> Edite os textos abaixo, clique em <strong>Salvar</strong> para guardar no navegador. Quando quiser atualizar o site, clique em <strong>Exportar JSON</strong>, baixe o arquivo e envie para o desenvolvedor.
+          </div>
+        </div>
+
+        <!-- ── HERO ── -->
+        <div class="dash-section active" id="sec-hero">
+          <div class="section-title">Hero</div>
+          <div class="section-desc">Primeira tela que o visitante vê ao entrar no site.</div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Título Principal</div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Texto antes do destaque</label>
+                <div class="field-hint">Aparece em branco, antes das palavras em amarelo</div>
+                <input class="field-input" id="hero_title_before" value="Transformando arquitetura em" />
+              </div>
+            </div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Texto em destaque (amarelo)</label>
+                <input class="field-input" id="hero_title_em" value="experiências visuais" />
+              </div>
+            </div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Texto depois do destaque</label>
+                <input class="field-input" id="hero_title_after" value="cinematográficas." />
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Parágrafo</div>
+            <div class="field-row full">
+              <div class="field-group">
+                <textarea class="field-textarea" id="hero_paragraph">Visualização arquitetônica, Imagens, Plantas, Vídeos, Tour 360º. Experiências digitais para Arquitetura, Incorporação e Mercado imobiliário.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Botões</div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Botão 1 (branco)</label>
+                <input class="field-input" id="hero_btn1" value="Ver Projetos" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Botão 2 (contorno)</label>
+                <input class="field-input" id="hero_btn2" value="Solicitar Orçamento" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── STATS ── -->
+        <div class="dash-section" id="sec-stats">
+          <div class="section-title">Números</div>
+          <div class="section-desc">Faixa amarela com estatísticas do estúdio.</div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Estatística 1</div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Número</label>
+                <input class="field-input" id="stat1_num" value="200" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Rótulo</label>
+                <input class="field-input" id="stat1_label" value="Projetos Realizados" />
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Estatística 2</div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Número</label>
+                <input class="field-input" id="stat2_num" value="8" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Rótulo</label>
+                <input class="field-input" id="stat2_label" value="Anos de Mercado" />
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Estatística 3</div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Número</label>
+                <input class="field-input" id="stat3_num" value="50" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Rótulo</label>
+                <input class="field-input" id="stat3_label" value="Clientes Ativos" />
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Estatística 4</div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Número</label>
+                <input class="field-input" id="stat4_num" value="4" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Rótulo</label>
+                <input class="field-input" id="stat4_label" value="Países Atendidos" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── STUDIO ── -->
+        <div class="dash-section" id="sec-studio">
+          <div class="section-title">Studio</div>
+          <div class="section-desc">Seção de apresentação do estúdio com foto e texto.</div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Cabeçalho</div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Eyebrow (pequeno, acima do título)</label>
+                <input class="field-input" id="studio_eyebrow" value="Studio — desde 2015" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Palavra em negrito no título</label>
+                <input class="field-input" id="studio_title_strong" value="arquitetônica" />
+              </div>
+            </div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Título completo</label>
+                <input class="field-input" id="studio_title" value="Visualização arquitetônica de alto padrão." />
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Texto Principal</div>
+            <div class="field-row full">
+              <div class="field-group">
+                <textarea class="field-textarea" id="studio_lead">Somos especialistas em transformar projetos arquitetônicos em imagens, animações e experiências interativas que comunicam com clareza e impactam quem vê.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Lista de Serviços</div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Item 1</label>
+                <input class="field-input" id="studio_list1" value="Imagens 3D fotorrealistas" />
+              </div>
+            </div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Item 2</label>
+                <input class="field-input" id="studio_list2" value="Animações e filmes arquitetônicos" />
+              </div>
+            </div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Item 3</label>
+                <input class="field-input" id="studio_list3" value="Tour Virtual 360º e plataforma interativa" />
+              </div>
+            </div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Item 4</label>
+                <input class="field-input" id="studio_list4" value="Plantas humanizadas e isométricas" />
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Números do Studio</div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Número 1</label>
+                <input class="field-input" id="studio_stat1_n" value="+200" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Rótulo 1</label>
+                <input class="field-input" id="studio_stat1_l" value="Projetos entregues" />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Número 2</label>
+                <input class="field-input" id="studio_stat2_n" value="+8" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Rótulo 2</label>
+                <input class="field-input" id="studio_stat2_l" value="Anos de mercado" />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Número 3</label>
+                <input class="field-input" id="studio_stat3_n" value="4" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Rótulo 3</label>
+                <input class="field-input" id="studio_stat3_l" value="Países atendidos" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SERVICES ── -->
+        <div class="dash-section" id="sec-services">
+          <div class="section-title">Serviços</div>
+          <div class="section-desc">Os 5 cards de serviços exibidos lado a lado.</div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Card 1 <span>01</span></div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Nome do serviço</label>
+                <input class="field-input" id="srv1_name" value="Perspectivas" />
+              </div>
+            </div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Descrição</label>
+                <textarea class="field-textarea" id="srv1_desc">As perspectivas arquitetônicas são imagens renderizadas que representam o projeto de forma realista e detalhada, seja em ambientes internos ou externos, em cenários diurnos ou noturnos.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Card 2 <span>02</span></div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Nome do serviço</label>
+                <input class="field-input" id="srv2_name" value="Filmes" />
+              </div>
+            </div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Descrição</label>
+                <textarea class="field-textarea" id="srv2_desc">Animações cinematográficas para empreendimentos imobiliários e arquitetura. Narrativas visuais que conectam emocionalmente com o comprador.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Card 3 <span>03</span></div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Nome do serviço</label>
+                <input class="field-input" id="srv3_name" value="Plantas Isométricas" />
+              </div>
+            </div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Descrição</label>
+                <textarea class="field-textarea" id="srv3_desc">As plantas isométricas, ou plantas em perspectiva, apresentam o projeto de forma tridimensional, unindo clareza técnica e leitura espacial.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Card 4 <span>04</span></div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Nome do serviço</label>
+                <input class="field-input" id="srv4_name" value="Tour Virtual 360º" />
+              </div>
+            </div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Descrição</label>
+                <textarea class="field-textarea" id="srv4_desc">Também oferecemos o Tour Virtual, uma solução imersiva que permite ao cliente ou observador explorar de forma livre o ambiente renderizado em 360 graus.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Card 5 <span>05</span></div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Nome do serviço</label>
+                <input class="field-input" id="srv5_name" value="Plataforma Interativa" />
+              </div>
+            </div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Descrição</label>
+                <textarea class="field-textarea" id="srv5_desc">Ambiente digital completo para apresentação de empreendimentos — Tour 360º, galeria, plantas e informações integradas em uma única experiência imersiva.</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TESTIMONIALS ── -->
+        <div class="dash-section" id="sec-testimonials">
+          <div class="section-title">Depoimentos</div>
+          <div class="section-desc">Os 3 cards de depoimentos de clientes.</div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Depoimento 1</div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Texto do depoimento</label>
+                <textarea class="field-textarea" id="dep1_text">As imagens entregues pelo estúdio foram determinantes no lançamento. Vendemos 80% das unidades na pré-venda graças à qualidade das renderizações.</textarea>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Nome</label>
+                <input class="field-input" id="dep1_name" value="Carlos Mendes" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Cargo · Empresa</label>
+                <input class="field-input" id="dep1_role" value="CEO · Mendes Incorporações" />
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Depoimento 2</div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Texto do depoimento</label>
+                <textarea class="field-textarea" id="dep2_text">Trabalhar com a Eleve 3D é uma experiência diferente. Eles entendem arquitetura de verdade. O resultado sempre supera o briefing.</textarea>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Nome</label>
+                <input class="field-input" id="dep2_name" value="Ana Fonseca" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Cargo · Empresa</label>
+                <input class="field-input" id="dep2_role" value="Arquiteta · Fonseca Atelier" />
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Depoimento 3</div>
+            <div class="field-row full">
+              <div class="field-group">
+                <label class="field-label">Texto do depoimento</label>
+                <textarea class="field-textarea" id="dep3_text">O walkthrough em Unreal Engine virou nosso principal argumento de vendas. Os clientes entram no apartamento antes de assinar o contrato.</textarea>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Nome</label>
+                <input class="field-input" id="dep3_name" value="Ricardo Vaz" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Cargo · Empresa</label>
+                <input class="field-input" id="dep3_role" value="Diretor · VazGroup Realty" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CONTACT ── -->
+        <div class="dash-section" id="sec-contact">
+          <div class="section-title">Contato</div>
+          <div class="section-desc">Seção final de contato com formulário.</div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Título</div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Texto antes do destaque</label>
+                <input class="field-input" id="con_title_before" value="Vamos" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Palavra em destaque (amarelo)</label>
+                <input class="field-input" id="con_title_em" value="conversar" />
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Parágrafo</div>
+            <div class="field-row full">
+              <div class="field-group">
+                <textarea class="field-textarea" id="con_paragraph">Se você busca imagens que valorizem seu projeto e comuniquem suas ideias com clareza e qualidade, entre em contato conosco. Estamos prontos para atender cada demanda com cuidado, precisão e alto padrão de entrega.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-card">
+            <div class="edit-card-title">Informações de Contato</div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Número WhatsApp (com código do país)</label>
+                <div class="field-hint">Ex: 554134940227</div>
+                <input class="field-input" id="con_whatsapp" value="554134940227" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Número exibido</label>
+                <input class="field-input" id="con_phone_display" value="+55 (41) 3494-0227" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /dash-content -->
+    </div><!-- /dash-main -->
+  </div>
+</div>
+
+<script>
+  const CREDENTIALS = {
+    email: 'bamartins3d@gmail.com',
+    password: 'Edu_119557'
+  };
+
+  const STORAGE_KEY = 'eleve3d_content';
+
+  // ── AUTH ──
+  function doLogin() {
+    const email = document.getElementById('l-email').value.trim();
+    const pass  = document.getElementById('l-pass').value;
+    if (email === CREDENTIALS.email && pass === CREDENTIALS.password) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      loadSaved();
+    } else {
+      document.getElementById('login-error').style.display = 'block';
+    }
+  }
+
+  document.getElementById('l-pass').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+
+  function doLogout() {
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('l-pass').value = '';
+  }
+
+  // ── NAVIGATION ──
+  function showSection(name, el) {
+    document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+    document.getElementById('sec-' + name).classList.add('active');
+    el.classList.add('active');
+    const titles = { hero:'Hero', stats:'Números', studio:'Studio', services:'Serviços', testimonials:'Depoimentos', contact:'Contato' };
+    document.getElementById('topbar-title').textContent = titles[name];
+  }
+
+  // ── COLLECT ALL FIELD VALUES ──
+  function collectData() {
+    const ids = [
+      'hero_title_before','hero_title_em','hero_title_after','hero_paragraph','hero_btn1','hero_btn2',
+      'stat1_num','stat1_label','stat2_num','stat2_label','stat3_num','stat3_label','stat4_num','stat4_label',
+      'studio_eyebrow','studio_title','studio_title_strong','studio_lead',
+      'studio_list1','studio_list2','studio_list3','studio_list4',
+      'studio_stat1_n','studio_stat1_l','studio_stat2_n','studio_stat2_l','studio_stat3_n','studio_stat3_l',
+      'srv1_name','srv1_desc','srv2_name','srv2_desc','srv3_name','srv3_desc','srv4_name','srv4_desc','srv5_name','srv5_desc',
+      'dep1_text','dep1_name','dep1_role','dep2_text','dep2_name','dep2_role','dep3_text','dep3_name','dep3_role',
+      'con_title_before','con_title_em','con_paragraph','con_whatsapp','con_phone_display'
+    ];
+    const data = {};
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) data[id] = el.value;
+    });
+    return data;
+  }
+
+  // ── SAVE TO LOCALSTORAGE ──
+  function saveData() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(collectData()));
+    const toast = document.getElementById('save-toast');
+    toast.style.display = 'flex';
+    setTimeout(() => toast.style.display = 'none', 2500);
+  }
+
+  // ── LOAD FROM LOCALSTORAGE ──
+  function loadSaved() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+    const data = JSON.parse(saved);
+    Object.entries(data).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+  }
+
+  // ── EXPORT JSON ──
+  function exportJSON() {
+    const data = collectData();
+    data._exportedAt = new Date().toLocaleString('pt-BR');
+    data._version = '1.0';
+
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = 'eleve3d-content.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+</script>
+</body>
+</html>
