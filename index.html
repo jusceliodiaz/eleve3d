@@ -1,680 +1,2301 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eleve 3D — Architectural Visualization Studio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #050505;
-  --bg2: #0c0c0c;
-  --bg3: #141414;
-  --fg: #fafafa;
-  --fg2: #999;
-  --fg3: #484848;
-  --accent: #e8e2d9;
-  --border: rgba(255,255,255,0.07);
-  --display: 'Cormorant Garamond', serif;
-  --ui: 'Syne', sans-serif;
-  --body: 'DM Sans', sans-serif;
-}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eleve 3D — Estúdio de Visualização Arquitetônica 3D | Brasil</title>
+    <meta
+      name="description"
+      content="Eleve 3D é um estúdio brasileiro de visualização arquitetônica especializado em renderizações 3D fotorrealistas, animações cinematográficas, tours virtuais e experiências VR para arquitetos e incorporadoras."
+    />
+    <meta
+      name="keywords"
+      content="visualização arquitetônica, renderização 3D, archviz, animação arquitetônica, tour virtual, VR arquitetura, renderização fotorrealista, estúdio 3D Brasil"
+    />
+    <meta name="author" content="Eleve 3D Studio" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://eleve3d.com.br/" />
 
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:var(--body);background:var(--bg);color:var(--fg);overflow-x:hidden;cursor:none;}
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://eleve3d.com.br/" />
+    <meta
+      property="og:title"
+      content="Eleve 3D — Estúdio de Visualização Arquitetônica 3D"
+    />
+    <meta
+      property="og:description"
+      content="Transformamos arquitetura em experiências visuais cinematográficas. Renderizações 3D, animações, tours virtuais e VR para arquitetos e incorporadoras."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+    />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Eleve 3D Studio" />
 
-::-webkit-scrollbar{width:5px;}
-::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:3px;}
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Eleve 3D — Estúdio de Visualização Arquitetônica 3D"
+    />
+    <meta
+      name="twitter:description"
+      content="Transformamos arquitetura em experiências visuais cinematográficas. Renderizações 3D, animações, tours virtuais e VR."
+    />
+    <meta
+      name="twitter:image"
+      content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+    />
 
-/* CURSOR */
-#cur{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:difference;}
-#cur-dot{width:7px;height:7px;background:#fff;border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:width .15s,height .15s;}
-#cur-ring{width:38px;height:38px;border:1px solid rgba(255,255,255,.45);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;}
-body.ch #cur-ring{width:58px;height:58px;border-color:#fff;}
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Eleve 3D Studio",
+        "description": "Estúdio brasileiro de visualização arquitetônica especializado em renderizações 3D fotorrealistas, animações cinematográficas, tours virtuais e experiências VR.",
+        "url": "https://eleve3d.com.br",
+        "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "São Paulo",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "areaServed": "BR",
+        "availableLanguage": "Portuguese",
+        "sameAs": [],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Serviços de Visualização Arquitetônica",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Imagens 3D Fotorrealistas"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Animações e Filmes Arquitetônicos"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Visualização em Tempo Real"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Experiência VR Imersiva"
+              }
+            }
+          ]
+        }
+      }
+    </script>
 
-/* LOADER */
-#loader{position:fixed;inset:0;background:var(--bg);z-index:9998;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .9s ease,visibility .9s ease;}
-#loader.out{opacity:0;visibility:hidden;}
-.ld-logo{font-family:var(--ui);font-size:2.4rem;font-weight:800;letter-spacing:.18em;overflow:hidden;display:flex;}
-.ld-logo span{display:inline-block;opacity:0;transform:translateY(110%);animation:ldup .7s cubic-bezier(.16,1,.3,1) forwards;}
-.ld-logo span:nth-child(1){animation-delay:.05s}
-.ld-logo span:nth-child(2){animation-delay:.1s}
-.ld-logo span:nth-child(3){animation-delay:.15s}
-.ld-logo span:nth-child(4){animation-delay:.2s}
-.ld-logo span:nth-child(5){animation-delay:.25s}
-.ld-logo span:nth-child(6){animation-delay:.3s}
-.ld-logo span:nth-child(7){animation-delay:.35s}
-.ld-logo span:nth-child(8){animation-delay:.4s}
-.ld-line{width:0;height:1px;background:var(--fg3);margin-top:1.8rem;animation:ldline 1.4s ease .5s forwards;}
-.ld-sub{font-family:var(--ui);font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:var(--fg3);margin-top:.9rem;opacity:0;animation:fdin .5s ease 1.1s forwards;}
-@keyframes ldup{to{opacity:1;transform:translateY(0)}}
-@keyframes ldline{to{width:190px}}
-@keyframes fdin{to{opacity:1}}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,600;1,700&family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #050505;
+        --bg2: #0c0c0c;
+        --bg3: #141414;
+        --fg: #fafafa;
+        --fg2: #999;
+        --fg3: #484848;
+        --accent: #e8e2d9;
+        --yellow: #f5a623;
+        --border: rgba(255, 255, 255, 0.07);
+        --display: "Montserrat", sans-serif;
+        --ui: "Syne", sans-serif;
+        --body: "DM Sans", sans-serif;
+      }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent;}
-nav.sc{padding:1.1rem 4rem;background:rgba(5,5,5,.88);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom-color:var(--border);}
-.nav-logo{font-family:var(--ui);font-size:1.25rem;font-weight:800;letter-spacing:.15em;text-decoration:none;color:var(--fg);cursor:none;}
-.nav-logo em{font-style:normal;color:var(--fg3);}
-.nav-links{display:flex;gap:2.8rem;list-style:none;}
-.nav-links a{font-family:var(--ui);font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--fg2);text-decoration:none;transition:color .3s;cursor:none;position:relative;}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--fg);transition:width .3s;}
-.nav-links a:hover{color:var(--fg);}
-.nav-links a:hover::after{width:100%;}
-.nav-cta{font-family:var(--ui);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bg);background:var(--fg);text-decoration:none;padding:.65rem 1.7rem;border-radius:100px;transition:opacity .3s,transform .3s;cursor:none;}
-.nav-cta:hover{opacity:.82;transform:scale(1.04);}
-.hbg{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px;}
-.hbg span{display:block;width:24px;height:1px;background:var(--fg);transition:transform .4s,opacity .4s;}
-.hbg.on span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-.hbg.on span:nth-child(2){opacity:0;}
-.hbg.on span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--body);
+        background: var(--bg);
+        color: var(--fg);
+        overflow-x: hidden;
+        cursor: none;
+      }
 
-/* MOBILE MENU */
-#mob{position:fixed;inset:0;background:var(--bg);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;}
-#mob.on{opacity:1;visibility:visible;}
-#mob a{font-family:var(--display);font-size:clamp(2.5rem,8vw,5rem);font-weight:300;color:var(--fg);text-decoration:none;line-height:1.2;transition:color .2s;cursor:none;}
-#mob a:hover{color:var(--fg3);}
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2a2a2a;
+        border-radius: 3px;
+      }
 
-/* HERO */
-.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding-bottom:9rem;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=90&w=1920&auto=format&fit=crop');background-size:cover;background-position:center;transform:scale(1.06);transition:transform 9s ease;}
-.hero-bg.go{transform:scale(1);}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,5,.15) 0%,rgba(5,5,5,.4) 50%,rgba(5,5,5,.88) 100%);}
-.hero-c{position:relative;z-index:2;max-width:1380px;margin:0 auto;padding:0 4rem;width:100%;}
-.hero-label{font-family:var(--ui);font-size:.65rem;letter-spacing:.5em;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-bottom:2rem;opacity:0;animation:hup 1s cubic-bezier(.16,1,.3,1) .9s forwards;}
-.hero-h1{font-family:var(--display);font-size:clamp(3rem,6.5vw,7.5rem);font-weight:300;line-height:1.04;letter-spacing:-.01em;max-width:950px;opacity:0;animation:hup 1s cubic-bezier(.16,1,.3,1) 1.1s forwards;}
-.hero-h1 em{font-style:italic;color:var(--accent);}
-.hero-p{max-width:520px;color:rgba(255,255,255,.6);font-size:1.05rem;line-height:1.75;margin-top:2rem;opacity:0;animation:hup 1s cubic-bezier(.16,1,.3,1) 1.3s forwards;}
-.hero-btns{display:flex;gap:1rem;margin-top:3rem;flex-wrap:wrap;opacity:0;animation:hup 1s cubic-bezier(.16,1,.3,1) 1.5s forwards;}
-@keyframes hup{from{opacity:0;transform:translateY(38px)}to{opacity:1;transform:translateY(0)}}
-.scroll-ind{position:absolute;bottom:2.5rem;right:4rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:0;animation:fdin 1s ease 2.2s forwards;}
-.scroll-ind span{font-family:var(--ui);font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.3);writing-mode:vertical-rl;}
-.scroll-line{width:1px;height:55px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:spulse 2.2s ease infinite;}
-@keyframes spulse{0%,100%{opacity:.35;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.15)}}
+      /* CURSOR */
+      #cur {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 10001;
+        mix-blend-mode: difference;
+      }
+      #cur-dot {
+        width: 7px;
+        height: 7px;
+        background: #fff;
+        border-radius: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.15s,
+          height 0.15s;
+      }
+      #cur-ring {
+        width: 38px;
+        height: 38px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        border-radius: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.3s,
+          height 0.3s,
+          border-color 0.3s;
+      }
+      body.ch #cur-ring {
+        width: 58px;
+        height: 58px;
+        border-color: #fff;
+      }
 
-/* BTNS */
-.btn-w{font-family:var(--ui);font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--bg);background:var(--fg);text-decoration:none;padding:1.05rem 2.4rem;border-radius:100px;transition:opacity .3s,transform .3s;cursor:none;display:inline-block;}
-.btn-w:hover{opacity:.83;transform:translateY(-2px);}
-.btn-o{font-family:var(--ui);font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--fg);background:transparent;text-decoration:none;padding:1.05rem 2.4rem;border-radius:100px;border:1px solid rgba(255,255,255,.22);transition:all .3s;cursor:none;display:inline-block;}
-.btn-o:hover{background:var(--fg);color:var(--bg);border-color:var(--fg);transform:translateY(-2px);}
-.btn-dark{font-family:var(--ui);font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--fg);background:var(--bg);text-decoration:none;padding:1.15rem 3rem;border-radius:100px;transition:opacity .3s,transform .3s;cursor:none;display:inline-block;}
-.btn-dark:hover{opacity:.72;transform:translateY(-2px);}
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        padding: 2rem 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition:
+          padding 0.4s,
+          background 0.4s,
+          border-color 0.4s;
+        border-bottom: 1px solid transparent;
+      }
+      nav.sc {
+        padding: 1.1rem 4rem;
+        background: rgba(5, 5, 5, 0.88);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        border-bottom-color: var(--border);
+      }
+      .nav-logo {
+        font-family: var(--ui);
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-decoration: none;
+        color: var(--fg);
+        cursor: none;
+      }
+      .nav-logo em {
+        font-style: normal;
+        color: var(--yellow);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.8rem;
+        list-style: none;
+      }
+      .nav-links a {
+        font-family: var(--ui);
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--fg);
+        text-decoration: none;
+        transition: color 0.3s;
+        cursor: none;
+        position: relative;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--yellow);
+        transition: width 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--yellow);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-cta {
+        font-family: var(--ui);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--bg);
+        background: var(--fg);
+        text-decoration: none;
+        padding: 0.65rem 1.7rem;
+        border-radius: 100px;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+        cursor: none;
+      }
+      .nav-cta:hover {
+        opacity: 0.82;
+        transform: scale(1.04);
+      }
+      .hbg {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: none;
+        background: none;
+        border: none;
+        padding: 4px;
+      }
+      .hbg span {
+        display: block;
+        width: 24px;
+        height: 1px;
+        background: var(--fg);
+        transition:
+          transform 0.4s,
+          opacity 0.4s;
+      }
+      .hbg.on span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+      .hbg.on span:nth-child(2) {
+        opacity: 0;
+      }
+      .hbg.on span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
 
-/* SECTIONS */
-section{padding:8rem 4rem;}
-.inner{max-width:1380px;margin:0 auto;}
-.sec-label{font-family:var(--ui);font-size:.6rem;letter-spacing:.5em;text-transform:uppercase;color:var(--fg3);display:block;margin-bottom:1.5rem;}
-.sec-title{font-family:var(--display);font-size:clamp(2.5rem,4.8vw,5.5rem);font-weight:300;line-height:1.1;letter-spacing:-.01em;}
-.sec-title em{font-style:italic;color:var(--fg3);}
+      /* MOBILE MENU */
+      #mob {
+        position: fixed;
+        inset: 0;
+        background: var(--bg);
+        z-index: 99;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.4s,
+          visibility 0.4s;
+      }
+      #mob.on {
+        opacity: 1;
+        visibility: visible;
+      }
+      #mob a {
+        font-family: var(--display);
+        font-size: clamp(1.8rem, 6vw, 3.5rem);
+        font-weight: 200;
+        color: var(--fg);
+        text-decoration: none;
+        line-height: 1.2;
+        transition: color 0.2s;
+        cursor: none;
+      }
+      #mob a:hover {
+        color: var(--fg3);
+      }
 
-/* REVEAL */
-.rev{opacity:0;transform:translateY(44px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1);}
-.rev.vis{opacity:1;transform:translateY(0);}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 9rem;
+        overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transform: scale(1.06);
+        transition: opacity 1.5s ease, transform 9s ease;
+      }
+      .hero-slide.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .hero-ov {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(5, 5, 5, 0.15) 0%,
+          rgba(5, 5, 5, 0.4) 50%,
+          rgba(5, 5, 5, 0.88) 100%
+        );
+      }
+      .hero-c {
+        position: relative;
+        z-index: 2;
+        max-width: 1380px;
+        margin: 0 auto;
+        padding: 0 4rem;
+        width: 100%;
+      }
+      .hero-label {
+        font-family: var(--ui);
+        font-size: 0.65rem;
+        letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
+        display: block;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: hup 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+      }
+      .hero-h1 {
+        font-family: var(--display);
+        font-size: clamp(1.8rem, 4vw, 4.6rem);
+        font-weight: 700;
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+        max-width: 950px;
+        opacity: 0;
+        animation: hup 1s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
+      }
+      .hero-h1 em {
+        font-style: italic;
+        color: var(--yellow);
+      }
+      .hero-p {
+        max-width: 520px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        margin-top: 2rem;
+        opacity: 0;
+        animation: hup 1s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 1rem;
+        margin-top: 3rem;
+        flex-wrap: wrap;
+        opacity: 0;
+        animation: hup 1s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+      }
+      @keyframes hup {
+        from {
+          opacity: 0;
+          transform: translateY(38px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .scroll-ind {
+        position: absolute;
+        bottom: 8rem;
+        right: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        opacity: 0;
+        animation: fdin 1s ease 2.2s forwards;
+      }
+      .scroll-ind span {
+        font-family: var(--ui);
+        font-size: 0.55rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #f5a623;
+        writing-mode: vertical-rl;
+      }
+      .scroll-line {
+        width: 1px;
+        height: 55px;
+        background: linear-gradient(to bottom, #f5a623, transparent);
+        animation: spulse 2.2s ease infinite;
+      }
+      @keyframes spulse {
+        0%,
+        100% {
+          opacity: 0.35;
+          transform: scaleY(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scaleY(1.15);
+        }
+      }
 
-/* STATS */
-.stats-wrap{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0 4rem;}
-.stats-grid{max-width:1380px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);background:var(--border);}
-.stat{background:var(--bg2);padding:3.5rem 2.5rem;text-align:center;gap:1px;}
-.stat-n{font-family:var(--display);font-size:clamp(3rem,5vw,5.5rem);font-weight:300;line-height:1;letter-spacing:-.02em;display:block;}
-.stat-l{font-family:var(--ui);font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:var(--fg3);margin-top:.7rem;display:block;}
+      /* BTNS */
+      .btn-w {
+        font-family: var(--ui);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--bg);
+        background: var(--fg);
+        text-decoration: none;
+        padding: 1.05rem 2.4rem;
+        border-radius: 100px;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+        cursor: none;
+        display: inline-block;
+      }
+      .btn-w:hover {
+        opacity: 0.83;
+        transform: translateY(-2px);
+      }
+      .btn-o {
+        font-family: var(--ui);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--fg);
+        background: transparent;
+        text-decoration: none;
+        padding: 1.05rem 2.4rem;
+        border-radius: 100px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        transition: all 0.3s;
+        cursor: none;
+        display: inline-block;
+      }
+      .btn-o:hover {
+        background: var(--fg);
+        color: var(--bg);
+        border-color: var(--fg);
+        transform: translateY(-2px);
+      }
+      .btn-dark {
+        font-family: var(--ui);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--fg);
+        background: var(--bg);
+        text-decoration: none;
+        padding: 1.15rem 3rem;
+        border-radius: 100px;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+        cursor: none;
+        display: inline-block;
+      }
+      .btn-dark:hover {
+        opacity: 0.72;
+        transform: translateY(-2px);
+      }
 
-/* PORTFOLIO */
-.port-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:2rem;margin-bottom:2.5rem;}
-.filters{display:flex;gap:.5rem;flex-wrap:wrap;}
-.fb{font-family:var(--ui);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fg2);background:transparent;border:1px solid var(--border);padding:.55rem 1.4rem;border-radius:100px;cursor:none;transition:all .3s;}
-.fb.on,.fb:hover{color:var(--bg);background:var(--fg);border-color:var(--fg);}
-.port-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
-.pi{position:relative;overflow:hidden;border-radius:0;background:var(--bg3);cursor:none;}
-.pi:nth-child(1),.pi:nth-child(8){grid-column:span 2;}
-.pi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1);}
-.pi:nth-child(1) img,.pi:nth-child(8) img{aspect-ratio:16/9;}
-.pi:not(:nth-child(1)):not(:nth-child(8)) img{aspect-ratio:3/4;}
-.pi:hover img{transform:scale(1.07);}
-.pi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,.88) 0%,rgba(5,5,5,.1) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;opacity:0;transition:opacity .4s;}
-.pi:hover .pi-ov{opacity:1;}
-.pi-cat{font-family:var(--ui);font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.35rem;}
-.pi-name{font-family:var(--display);font-size:1.6rem;font-weight:400;}
-.pi-cap{display:none;}
+      /* SECTIONS */
+      section {
+        padding: 8rem 4rem;
+      }
+      .inner {
+        max-width: 1380px;
+        margin: 0 auto;
+      }
+      .sec-label {
+        font-family: var(--ui);
+        font-size: 0.6rem;
+        letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: var(--fg3);
+        display: block;
+        margin-bottom: 1.5rem;
+      }
+      #portfolio .sec-label,
+      #contact .sec-label {
+        color: var(--fg);
+      }
+      .sec-title {
+        font-family: var(--display);
+        font-size: clamp(1.8rem, 3.6vw, 4rem);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      }
+      .sec-title em {
+        font-style: italic;
+        color: var(--yellow);
+      }
 
-/* SERVICES */
-.srv-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4.5rem;}
-.srv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;}
-.sc-card{background:var(--bg2);border:1px solid var(--border);border-radius:1.5rem;padding:3rem;transition:border-color .4s,transform .4s,background .4s;cursor:none;}
-.sc-card:hover{border-color:rgba(255,255,255,.18);transform:translateY(-7px);background:var(--bg3);}
-.sc-num{font-family:var(--display);font-size:2.8rem;font-weight:300;color:rgba(255,255,255,.05);line-height:1;margin-bottom:1.5rem;}
-.sc-icon{width:44px;height:44px;margin-bottom:1.8rem;color:var(--fg3);}
-.sc-name{font-family:var(--display);font-size:1.9rem;font-weight:400;margin-bottom:.85rem;}
-.sc-desc{color:var(--fg2);font-size:.95rem;line-height:1.7;}
+      /* REVEAL */
+      .rev {
+        opacity: 0;
+        transform: translateY(44px);
+        transition:
+          opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .rev.vis {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .d1 {
+        transition-delay: 0.1s;
+      }
+      .d2 {
+        transition-delay: 0.2s;
+      }
+      .d3 {
+        transition-delay: 0.3s;
+      }
+      .d4 {
+        transition-delay: 0.4s;
+      }
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;}
-.ab-body{color:var(--fg2);font-size:1.02rem;line-height:1.8;}
-.ab-body p+p{margin-top:1.4rem;}
-.ab-div{width:50px;height:1px;background:var(--fg3);margin:2.5rem 0;}
-.ab-stats{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.8rem;}
-.ab-stat-n{font-family:var(--display);font-size:2.8rem;font-weight:300;line-height:1;}
-.ab-stat-l{font-family:var(--ui);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--fg3);margin-top:.4rem;}
-.ab-img-wrap{position:relative;}
-.ab-img-wrap img{width:100%;height:640px;object-fit:cover;border-radius:1.25rem;display:block;}
-.ab-badge{position:absolute;bottom:2rem;left:-2.5rem;background:rgba(5,5,5,.9);border:1px solid var(--border);backdrop-filter:blur(18px);padding:1.4rem 2rem;border-radius:.9rem;}
-.ab-badge .big{font-family:var(--display);font-size:1.8rem;font-weight:300;line-height:1;}
-.ab-badge .sm{font-family:var(--ui);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--fg3);margin-top:.25rem;}
+      /* STATS */
+      .stats-wrap {
+        background: var(--yellow);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 0 4rem;
+      }
+      .stats-grid {
+        max-width: 1380px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        background: var(--border);
+      }
+      .stat {
+        background: var(--yellow);
+        padding: 3.5rem 2.5rem;
+        text-align: center;
+        gap: 1px;
+      }
+      .stat-n {
+        font-family: var(--display);
+        font-size: clamp(2.2rem, 4vw, 4.2rem);
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        display: block;
+      }
+      .stat-l {
+        font-family: var(--ui);
+        font-size: 0.6rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--fg3);
+        margin-top: 0.7rem;
+        display: block;
+      }
 
-/* TESTIMONIALS */
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:4rem;}
-.tc{background:var(--bg2);border:1px solid var(--border);border-radius:1.5rem;padding:2.5rem;transition:border-color .3s,transform .3s;cursor:none;}
-.tc:hover{border-color:rgba(255,255,255,.14);transform:translateY(-5px);}
-.tc-q{font-family:var(--display);font-size:1.15rem;font-weight:300;line-height:1.65;color:var(--fg);margin-bottom:2rem;}
-.tc-q::before{content:'\201C';font-size:3.5rem;line-height:0;vertical-align:-1.4rem;color:var(--fg3);margin-right:.2rem;}
-.tc-auth{display:flex;align-items:center;gap:.9rem;border-top:1px solid var(--border);padding-top:1.4rem;}
-.tc-av{width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--bg3);}
-.tc-av img{width:100%;height:100%;object-fit:cover;}
-.tc-name{font-family:var(--ui);font-size:.82rem;font-weight:600;}
-.tc-role{font-size:.7rem;color:var(--fg3);font-family:var(--ui);}
+      /* SOBRE NÓS */
+      .sobre-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 5rem;
+        align-items: start;
+      }
+      .sobre-texto {
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+      }
+      .sobre-texto p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #2a2a2a;
+      }
+      .sobre-grid .sec-title,
+      .sobre-grid .sec-title em {
+        color: #1a1a1a;
+      }
+      .sobre-grid .sec-label {
+        color: #3a3a3a;
+      }
+      #about .sec-title {
+        color: #444;
+      }
+      #about .sec-label {
+        color: #555;
+      }
+      #about .ab-stat-n {
+        color: var(--fg);
+      }
+      #about .sec-title em {
+        color: var(--fg);
+      }
+      @media (max-width: 860px) {
+        .sobre-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+      }
 
-/* CTA */
-.cta-sec{background:var(--fg);color:var(--bg);text-align:center;padding:10rem 4rem;}
-.cta-sec .sec-label{color:rgba(5,5,5,.38);}
-.cta-sec .sec-title{color:var(--bg);max-width:820px;margin:0 auto 3rem;}
-.cta-sec .sec-title em{font-style:italic;color:#666;}
+      /* PORTFOLIO */
+      .port-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+      }
+      .filters {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .fb {
+        font-family: var(--ui);
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--fg2);
+        background: transparent;
+        border: 1px solid var(--border);
+        padding: 0.55rem 1.4rem;
+        border-radius: 100px;
+        cursor: none;
+        transition: all 0.3s;
+      }
+      .fb.on,
+      .fb:hover {
+        color: var(--bg);
+        background: var(--fg);
+        border-color: var(--fg);
+      }
+      .port-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3px;
+      }
+      .pi {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0;
+        background: var(--bg3);
+        cursor: none;
+      }
+      .pi:nth-child(1),
+      .pi:nth-child(8) {
+        grid-column: span 2;
+      }
+      .pi img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .pi:nth-child(1) img,
+      .pi:nth-child(8) img {
+        aspect-ratio: 16/9;
+      }
+      .pi:not(:nth-child(1)):not(:nth-child(8)) img {
+        aspect-ratio: 3/4;
+      }
+      .pi:hover img {
+        transform: scale(1.07);
+      }
+      .pi-ov {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(5, 5, 5, 0.88) 0%,
+          rgba(5, 5, 5, 0.1) 55%,
+          transparent 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .pi:hover .pi-ov {
+        opacity: 1;
+      }
+      .pi-cat {
+        font-family: var(--ui);
+        font-size: 0.55rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
+        margin-bottom: 0.35rem;
+      }
+      .pi-name {
+        font-family: var(--display);
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+      .pi-cap {
+        display: none;
+      }
 
-/* CONTACT */
-.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start;}
-.con-info p{color:var(--fg2);line-height:1.7;margin-bottom:3rem;font-size:1.02rem;}
-.con-items{display:flex;flex-direction:column;gap:1.5rem;}
-.con-item{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--fg);transition:opacity .3s;cursor:none;}
-.con-item:hover{opacity:.55;}
-.con-icon{width:42px;height:42px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--fg2);}
-.con-icon svg{width:17px;height:17px;}
-.con-item-t{font-family:var(--ui);font-size:.88rem;}
-.con-item-l{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--fg3);}
-.cf{display:flex;flex-direction:column;gap:1.2rem;}
-.fg-group{display:flex;flex-direction:column;gap:.45rem;}
-.fg-group label{font-family:var(--ui);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--fg3);}
-.fg-group input,.fg-group textarea{background:var(--bg2);border:1px solid var(--border);border-radius:.7rem;padding:.95rem 1.15rem;color:var(--fg);font-family:var(--body);font-size:.95rem;outline:none;transition:border-color .3s;resize:none;}
-.fg-group input:focus,.fg-group textarea:focus{border-color:rgba(255,255,255,.28);}
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
-.sub-btn{font-family:var(--ui);font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--bg);background:var(--fg);border:none;padding:1.15rem;border-radius:.7rem;cursor:none;transition:opacity .3s,transform .3s;margin-top:.3rem;}
-.sub-btn:hover{opacity:.83;transform:translateY(-2px);}
+      /* SERVICES */
+      .srv-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: end;
+        margin-bottom: 4.5rem;
+      }
+      .srv-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+      .sc-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 1.5rem;
+        padding: 3rem;
+        transition:
+          border-color 0.4s,
+          transform 0.4s,
+          background 0.4s;
+        cursor: none;
+      }
+      .sc-card:hover {
+        border-color: rgba(255, 255, 255, 0.18);
+        transform: translateY(-7px);
+        background: var(--bg3);
+      }
+      .sc-num {
+        font-family: var(--display);
+        font-size: 2.2rem;
+        font-weight: 200;
+        color: rgba(255, 255, 255, 0.05);
+        line-height: 1;
+        margin-bottom: 1.5rem;
+      }
+      .sc-icon {
+        width: 44px;
+        height: 44px;
+        margin-bottom: 1.8rem;
+        color: var(--fg3);
+      }
+      .sc-name {
+        font-family: var(--display);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.85rem;
+      }
+      .sc-desc {
+        color: var(--fg2);
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
 
-/* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:4rem 4rem 2.5rem;}
-.ft-inner{max-width:1380px;margin:0 auto;}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid var(--border);}
-.ft-brand{font-family:var(--ui);font-size:1.45rem;font-weight:800;letter-spacing:.14em;margin-bottom:.9rem;}
-.ft-desc{color:var(--fg3);font-size:.88rem;line-height:1.7;max-width:280px;}
-.ft-col-t{font-family:var(--ui);font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--fg3);margin-bottom:1.4rem;}
-.ft-links{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
-.ft-links a{font-size:.88rem;color:var(--fg2);text-decoration:none;transition:color .2s;cursor:none;}
-.ft-links a:hover{color:var(--fg);}
-.ft-bot{display:flex;align-items:center;justify-content:space-between;padding-top:2rem;}
-.ft-copy{font-size:.75rem;color:var(--fg3);font-family:var(--ui);}
-.socials{display:flex;gap:.8rem;}
-.soc{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--fg3);text-decoration:none;transition:border-color .3s,color .3s,transform .3s;cursor:none;}
-.soc:hover{border-color:rgba(255,255,255,.28);color:var(--fg);transform:translateY(-3px);}
-.soc svg{width:14px;height:14px;}
+      /* ABOUT */
+      /* ABOUT REDESIGN */
+      .ab2-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 1380px;
+        margin: 0 auto;
+        padding: 5rem 4rem;
+        gap: 5rem;
+        align-items: center;
+      }
+      .ab2-img {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        align-self: stretch;
+      }
+      .ab2-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+        border-radius: 1rem;
+      }
+      .ab2-content {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0;
+      }
+      .ab2-eyebrow {
+        font-family: var(--ui);
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.45em;
+        text-transform: uppercase;
+        color: #333;
+        display: block;
+        margin-bottom: 1.4rem;
+      }
+      .ab2-title {
+        font-family: var(--display);
+        font-size: clamp(2rem, 3.2vw, 3.6rem);
+        font-weight: 200;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: #1a1a1a;
+        margin-bottom: 0;
+      }
+      .ab2-title strong {
+        font-weight: 800;
+        color: #111;
+      }
+      .ab2-divider {
+        width: 40px;
+        height: 3px;
+        background: var(--yellow);
+        margin: 2rem 0;
+        border-radius: 2px;
+      }
+      .ab2-lead {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #2a2a2a;
+        margin-bottom: 2rem;
+      }
+      .ab2-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        margin-bottom: 2.5rem;
+      }
+      .ab2-list li {
+        font-family: var(--ui);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #222;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .ab2-dot {
+        width: 6px;
+        height: 6px;
+        background: var(--yellow);
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .ab2-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        border-top: 1px solid rgba(0,0,0,0.12);
+        padding-top: 2rem;
+      }
+      .ab2-stat {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding-right: 1.5rem;
+        border-right: 1px solid rgba(0,0,0,0.1);
+      }
+      .ab2-stat:last-child {
+        border-right: none;
+        padding-left: 1.5rem;
+        padding-right: 0;
+      }
+      .ab2-stat:nth-child(2) {
+        padding-left: 1.5rem;
+      }
+      .ab2-stat-n {
+        font-family: var(--display);
+        font-size: 2rem;
+        font-weight: 700;
+        color: #111;
+        line-height: 1;
+      }
+      .ab2-stat-l {
+        font-family: var(--ui);
+        font-size: 0.58rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #555;
+      }
+      @media (max-width: 860px) {
+        .ab2-wrap { grid-template-columns: 1fr; }
+        .ab2-img { height: 360px; }
+        .ab2-content { padding: 4rem 2rem; }
+        .ab2-stats { grid-template-columns: repeat(3, 1fr); }
+      }
 
-/* WHATSAPP */
-.wa{position:fixed;bottom:2rem;right:2rem;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:50;text-decoration:none;box-shadow:0 4px 22px rgba(37,211,102,.4);transition:transform .3s,box-shadow .3s;cursor:none;}
-.wa:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,211,102,.5);}
-.wa svg{width:26px;height:26px;fill:#fff;}
+      /* TESTIMONIALS */
+      .test-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+        margin-top: 4rem;
+      }
+      .tc {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 1.5rem;
+        padding: 2.5rem;
+        transition:
+          border-color 0.3s,
+          transform 0.3s;
+        cursor: none;
+      }
+      .tc:hover {
+        border-color: rgba(255, 255, 255, 0.14);
+        transform: translateY(-5px);
+      }
+      .tc-q {
+        font-family: var(--display);
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.7;
+        color: var(--fg);
+        margin-bottom: 2rem;
+      }
+      .tc-q::before {
+        content: "\201C";
+        font-size: 3.5rem;
+        line-height: 0;
+        vertical-align: -1.4rem;
+        color: var(--fg3);
+        margin-right: 0.2rem;
+      }
+      .tc-auth {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        border-top: 1px solid var(--border);
+        padding-top: 1.4rem;
+      }
+      .tc-av {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: var(--bg3);
+      }
+      .tc-av img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .tc-name {
+        font-family: var(--ui);
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+      .tc-role {
+        font-size: 0.7rem;
+        color: var(--fg3);
+        font-family: var(--ui);
+      }
 
-/* RESPONSIVE */
-@media(max-width:1050px){
-  .port-grid{grid-template-columns:repeat(3,1fr);}
-  .pi:nth-child(1),.pi:nth-child(8){grid-column:span 2;}
-  .about-grid{grid-template-columns:1fr;gap:3.5rem;}
-  .ab-badge{left:1rem;}
-}
-@media(max-width:860px){
-  nav{padding:1.4rem 2rem;}
-  nav.sc{padding:1rem 2rem;}
-  .nav-links,.nav-cta{display:none;}
-  .hbg{display:flex;}
-  section{padding:5rem 2rem;}
-  .stats-wrap{padding:0 2rem;}
-  .stats-grid{grid-template-columns:1fr 1fr;}
-  .srv-header{grid-template-columns:1fr;gap:1.5rem;}
-  .srv-grid{grid-template-columns:1fr;}
-  .test-grid{grid-template-columns:1fr;}
-  .con-grid{grid-template-columns:1fr;gap:3.5rem;}
-  .ft-top{grid-template-columns:1fr 1fr;gap:2.5rem;}
-  .port-grid{grid-template-columns:1fr 1fr;}
-  .pi:nth-child(1),.pi:nth-child(8){grid-column:span 2;}
-  .pi img{aspect-ratio:16/9!important;}
-  .f-row{grid-template-columns:1fr;}
-  .hero-c{padding:0 2rem;}
-  .scroll-ind{right:2rem;}
-}
-@media(max-width:580px){
-  .stats-grid{grid-template-columns:1fr 1fr;}
-  .ft-top{grid-template-columns:1fr;}
-  .ft-bot{flex-direction:column;gap:1.5rem;text-align:center;}
-  .hero-btns{flex-direction:column;align-items:flex-start;}
-  .ab-stats{grid-template-columns:1fr 1fr;}
-}
-</style>
-</head>
-<body>
+      /* CTA */
+      .cta-sec {
+        background: var(--fg);
+        color: var(--bg);
+        text-align: center;
+        padding: 10rem 4rem;
+      }
+      .cta-sec .sec-label {
+        color: rgba(5, 5, 5, 0.38);
+      }
+      .cta-sec .sec-title {
+        color: var(--bg);
+        max-width: 820px;
+        margin: 0 auto 3rem;
+      }
+      .cta-sec .sec-title em {
+        font-style: italic;
+        color: var(--yellow);
+      }
 
-<!-- CURSOR -->
-<div id="cur">
-  <div id="cur-dot"></div>
-  <div id="cur-ring"></div>
-</div>
+      /* CONTACT */
+      .con-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8rem;
+        align-items: start;
+      }
+      .con-info p {
+        color: var(--fg2);
+        line-height: 1.7;
+        margin-bottom: 3rem;
+        font-size: 1.02rem;
+      }
+      .con-items {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .con-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        color: var(--fg);
+        transition: opacity 0.3s;
+        cursor: none;
+      }
+      .con-item:hover {
+        opacity: 0.55;
+      }
+      .con-icon {
+        width: 55px;
+        height: 55px;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: var(--yellow);
+      }
+      .con-icon svg {
+        width: 22px;
+        height: 22px;
+      }
+      .con-item-t {
+        font-family: var(--ui);
+        font-size: 1.14rem;
+      }
+      .con-item-l {
+        font-size: 0.78rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--fg3);
+      }
+      .cf {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .fg-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+      }
+      .fg-group label {
+        font-family: var(--ui);
+        font-size: 0.6rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--fg3);
+      }
+      .fg-group input,
+      .fg-group textarea {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 0.7rem;
+        padding: 0.95rem 1.15rem;
+        color: var(--fg);
+        font-family: var(--body);
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 0.3s;
+        resize: none;
+      }
+      .fg-group input:focus,
+      .fg-group textarea:focus {
+        border-color: rgba(255, 255, 255, 0.28);
+      }
+      .f-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+      }
+      .sub-btn {
+        font-family: var(--ui);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--bg);
+        background: var(--fg);
+        border: none;
+        padding: 1.15rem;
+        border-radius: 0.7rem;
+        cursor: none;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+        margin-top: 0.3rem;
+      }
+      .sub-btn:hover {
+        opacity: 0.83;
+        transform: translateY(-2px);
+      }
 
-<!-- LOADER -->
-<div id="loader">
-  <div class="ld-logo">
-    <span>E</span><span>L</span><span>E</span><span>V</span><span>E</span><span>&nbsp;</span><span>3</span><span>D</span>
-  </div>
-  <div class="ld-line"></div>
-  <p class="ld-sub">Architectural Visualization Studio</p>
-</div>
+      /* LIGHTBOX */
+      #lb {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .35s ease, visibility .35s ease;
+      }
+      #lb.on { opacity: 1; visibility: visible; }
+      .lb-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,.93);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      #lbImg {
+        position: relative;
+        max-width: 90vw;
+        max-height: 88vh;
+        object-fit: contain;
+        border-radius: .75rem;
+        box-shadow: 0 32px 100px rgba(0,0,0,.8);
+        display: block;
+        transform: scale(.95);
+        transition: transform .4s cubic-bezier(.16,1,.3,1), opacity .3s ease;
+      }
+      #lb.on #lbImg { transform: scale(1); }
+      #lbImg.switching { opacity: 0; transform: scale(.97); }
+      .lb-close {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 44px;
+        height: 44px;
+        background: rgba(255,255,255,.1);
+        border: 1px solid rgba(255,255,255,.18);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: none;
+        color: #fff;
+        transition: background .2s, transform .2s;
+        z-index: 2;
+      }
+      .lb-close:hover { background: rgba(255,255,255,.22); transform: scale(1.08); }
+      .lb-close svg { width: 18px; height: 18px; }
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/5511999999999" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+      /* FOOTER */
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 4rem 4rem 2.5rem;
+      }
+      .ft-inner {
+        max-width: 1380px;
+        margin: 0 auto;
+      }
+      .ft-top {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 4rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .ft-brand {
+        font-family: var(--ui);
+        font-size: 1.45rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        margin-bottom: 0.9rem;
+      }
+      .ft-desc {
+        color: var(--fg3);
+        font-size: 0.88rem;
+        line-height: 1.7;
+        max-width: 280px;
+      }
+      .ft-col-t {
+        font-family: var(--ui);
+        font-size: 0.6rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--fg3);
+        margin-bottom: 1.4rem;
+      }
+      .ft-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .ft-links a {
+        font-size: 0.88rem;
+        color: var(--fg2);
+        text-decoration: none;
+        transition: color 0.2s;
+        cursor: none;
+      }
+      .ft-links a:hover {
+        color: var(--fg);
+      }
+      .ft-bot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 2rem;
+      }
+      .ft-copy {
+        font-size: 0.75rem;
+        color: var(--fg3);
+        font-family: var(--ui);
+      }
+      .socials {
+        display: flex;
+        gap: 0.8rem;
+      }
+      .soc {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fg3);
+        text-decoration: none;
+        transition:
+          border-color 0.3s,
+          color 0.3s,
+          transform 0.3s;
+        cursor: none;
+      }
+      .soc:hover {
+        border-color: rgba(255, 255, 255, 0.28);
+        color: var(--fg);
+        transform: translateY(-3px);
+      }
+      .soc svg {
+        width: 14px;
+        height: 14px;
+      }
 
-<!-- MOBILE MENU -->
-<div id="mob">
-  <a href="#home" onclick="closeM()">Home</a>
-  <a href="#portfolio" onclick="closeM()">Portfolio</a>
-  <a href="#services" onclick="closeM()">Serviços</a>
-  <a href="#about" onclick="closeM()">Studio</a>
-  <a href="#contact" onclick="closeM()">Contato</a>
-</div>
+      /* WHATSAPP */
+      .wa {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 54px;
+        height: 54px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+        text-decoration: none;
+        box-shadow: 0 4px 22px rgba(37, 211, 102, 0.4);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        cursor: none;
+      }
+      .wa:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5);
+      }
+      .wa svg {
+        width: 26px;
+        height: 26px;
+        fill: #fff;
+      }
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="#home" class="nav-logo">ELEVE <em>3D</em></a>
-  <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#services">Serviços</a></li>
-    <li><a href="#about">Studio</a></li>
-    <li><a href="#contact">Contato</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Orçamento</a>
-  <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
-
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-ov"></div>
-  <div class="hero-c">
-    <span class="hero-label">Architectural Visualization Studio</span>
-    <h1 class="hero-h1">Transformando arquitetura em <em>experiências visuais</em> cinematográficas.</h1>
-    <p class="hero-p">Renderizações hiper-realistas, animações cinematográficas e experiências interativas em tempo real para arquitetura e real estate.</p>
-    <div class="hero-btns">
-      <a href="#portfolio" class="btn-w">Ver Projetos</a>
-      <a href="#contact" class="btn-o">Solicitar Orçamento</a>
+      /* RESPONSIVE */
+      @media (max-width: 1050px) {
+        .port-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .pi:nth-child(1),
+        .pi:nth-child(8) {
+          grid-column: span 2;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 3.5rem;
+        }
+        .ab-badge {
+          left: 1rem;
+        }
+      }
+      @media (max-width: 860px) {
+        nav {
+          padding: 1.4rem 2rem;
+        }
+        nav.sc {
+          padding: 1rem 2rem;
+        }
+        .nav-links,
+        .nav-cta {
+          display: none;
+        }
+        .hbg {
+          display: flex;
+        }
+        section {
+          padding: 5rem 2rem;
+        }
+        .stats-wrap {
+          padding: 0 2rem;
+        }
+        .stats-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .srv-header {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .srv-grid {
+          grid-template-columns: 1fr;
+        }
+        .test-grid {
+          grid-template-columns: 1fr;
+        }
+        .con-grid {
+          grid-template-columns: 1fr;
+          gap: 3.5rem;
+        }
+        .ft-top {
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
+        }
+        .port-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .pi:nth-child(1),
+        .pi:nth-child(8) {
+          grid-column: span 2;
+        }
+        .pi img {
+          aspect-ratio: 16/9 !important;
+        }
+        .f-row {
+          grid-template-columns: 1fr;
+        }
+        .hero-c {
+          padding: 0 2rem;
+        }
+        .scroll-ind {
+          right: 2rem;
+        }
+      }
+      @media (max-width: 580px) {
+        .stats-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .ft-top {
+          grid-template-columns: 1fr;
+        }
+        .ft-bot {
+          flex-direction: column;
+          gap: 1.5rem;
+          text-align: center;
+        }
+        .hero-btns {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .ab-stats {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- CURSOR -->
+    <div id="cur">
+      <div id="cur-dot"></div>
+      <div id="cur-ring"></div>
     </div>
-  </div>
-  <div class="scroll-ind">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
 
-<!-- STATS -->
-<div class="stats-wrap">
-  <div class="stats-grid">
-    <div class="stat rev"><span class="stat-n" data-count="200" data-prefix="+">0</span><span class="stat-l">Projetos Realizados</span></div>
-    <div class="stat rev d1"><span class="stat-n" data-count="8" data-prefix="+">0</span><span class="stat-l">Anos de Mercado</span></div>
-    <div class="stat rev d2"><span class="stat-n" data-count="50" data-prefix="+">0</span><span class="stat-l">Clientes Ativos</span></div>
-    <div class="stat rev d3"><span class="stat-n" data-count="4">0</span><span class="stat-l">Países Atendidos</span></div>
-  </div>
-</div>
+    <!-- WHATSAPP -->
+    <a
+      href="https://wa.me/554134940227"
+      class="wa"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+    >
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </svg>
+    </a>
 
-<!-- PORTFOLIO -->
-<section id="portfolio" style="background:var(--bg);padding-bottom:0;">
-  <div class="inner" style="padding-bottom:2.5rem;">
-    <div class="port-header">
-      <div class="rev">
-        <span class="sec-label">Portfolio</span>
-        <h2 class="sec-title">Projetos em <em>Destaque</em></h2>
-      </div>
-      <div class="filters rev d1">
-        <button class="fb on" data-f="all">Todos</button>
-        <button class="fb" data-f="interior">Interiores</button>
-        <button class="fb" data-f="exterior">Exteriores</button>
-        <button class="fb" data-f="animation">Animação</button>
-      </div>
+    <!-- MOBILE MENU -->
+    <div id="mob">
+      <a href="#home" onclick="closeM()">Home</a>
+      <a href="#about" onclick="closeM()">Studio</a>
+      <a href="#portfolio" onclick="closeM()">Portfolio</a>
+      <a href="#services" onclick="closeM()">Serviços</a>
+      <a href="#contact" onclick="closeM()">Contato</a>
     </div>
-  </div>
-  <div class="port-grid">
-    <div class="pi rev" data-cat="interior">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400&auto=format&fit=crop" alt="Luxury Residence">
-      <div class="pi-ov"><span class="pi-cat">Archviz · Interior Design</span><h3 class="pi-name">Luxury Residence</h3></div>
-    </div>
-    <div class="pi rev d1" data-cat="exterior">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" alt="Modern Architecture">
-      <div class="pi-ov"><span class="pi-cat">Exterior Visualization</span><h3 class="pi-name">Modern Architecture</h3></div>
-    </div>
-    <div class="pi rev d2" data-cat="animation">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=800&auto=format&fit=crop" alt="Real Estate Film">
-      <div class="pi-ov"><span class="pi-cat">Cinematic Animation</span><h3 class="pi-name">Real Estate Film</h3></div>
-    </div>
-    <div class="pi rev d3" data-cat="interior">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop" alt="Penthouse Suite">
-      <div class="pi-ov"><span class="pi-cat">Interior Design</span><h3 class="pi-name">Penthouse Suite</h3></div>
-    </div>
-    <div class="pi rev" data-cat="exterior">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=800&auto=format&fit=crop" alt="Corporate Tower">
-      <div class="pi-ov"><span class="pi-cat">Commercial Archviz</span><h3 class="pi-name">Corporate Tower</h3></div>
-    </div>
-    <div class="pi rev d1" data-cat="interior">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop" alt="Villa Interior">
-      <div class="pi-ov"><span class="pi-cat">Interior Design</span><h3 class="pi-name">Villa Interior</h3></div>
-    </div>
-    <div class="pi rev d2" data-cat="exterior">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop" alt="Hillside House">
-      <div class="pi-ov"><span class="pi-cat">Exterior Visualization</span><h3 class="pi-name">Hillside House</h3></div>
-    </div>
-    <div class="pi rev" data-cat="animation">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=1400&auto=format&fit=crop" alt="Beach Resort">
-      <div class="pi-ov"><span class="pi-cat">Landscape Design</span><h3 class="pi-name">Beach Resort</h3></div>
-    </div>
-    <div class="pi rev d1" data-cat="exterior">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop" alt="Night Render">
-      <div class="pi-ov"><span class="pi-cat">Exterior · Night Scene</span><h3 class="pi-name">Night Render</h3></div>
-    </div>
-    <div class="pi rev d2" data-cat="animation">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=800&auto=format&fit=crop" alt="Urban Development">
-      <div class="pi-ov"><span class="pi-cat">Masterplan Visualization</span><h3 class="pi-name">Urban Development</h3></div>
-    </div>
-  </div>
-</section>
 
-<!-- SERVICES -->
-<section id="services" style="background:var(--bg2);border-top:1px solid var(--border);">
-  <div class="inner">
-    <div class="srv-header">
-      <div class="rev">
-        <span class="sec-label">Serviços</span>
-        <h2 class="sec-title">O que <em>fazemos</em></h2>
-      </div>
-      <p class="rev d1" style="color:var(--fg2);line-height:1.7;font-size:1.02rem;">Combinamos tecnologia de ponta com sensibilidade artística para entregar visualizações que impressionam e vendem.</p>
-    </div>
-    <div class="srv-grid">
-      <div class="sc-card rev">
-        <div class="sc-num">01</div>
-        <svg class="sc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="28" rx="2"/><path d="M16 40h16M24 36v4"/><circle cx="24" cy="22" r="6"/><path d="M4 28l8-8 6 6 8-10 8 8"/></svg>
-        <h3 class="sc-name">Imagens 3D</h3>
-        <p class="sc-desc">Renderizações fotorealistas de interiores e exteriores com padrão premium que transcendem o digital e convencem na primeira impressão.</p>
-      </div>
-      <div class="sc-card rev d1">
-        <div class="sc-num">02</div>
-        <svg class="sc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="18"/><polygon points="20,16 20,32 34,24" fill="currentColor" stroke="none"/></svg>
-        <h3 class="sc-name">Filmes</h3>
-        <p class="sc-desc">Animações cinematográficas para empreendimentos imobiliários e arquitetura. Narrativas visuais que conectam emocionalmente com o comprador.</p>
-      </div>
-      <div class="sc-card rev d2">
-        <div class="sc-num">03</div>
-        <svg class="sc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 24L24 8l18 16v16a2 2 0 01-2 2H8a2 2 0 01-2-2V24z"/><rect x="18" y="30" width="12" height="12"/><path d="M24 12v6M14 18h4M30 18h4"/></svg>
-        <h3 class="sc-name">Realtime</h3>
-        <p class="sc-desc">Walkthroughs interativos em Unreal Engine para apresentações imersivas. Explore o projeto em tempo real antes do primeiro tijolo assentado.</p>
-      </div>
-      <div class="sc-card rev d3">
-        <div class="sc-num">04</div>
-        <svg class="sc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 16a2 2 0 012-2h28a2 2 0 012 2v20a2 2 0 01-2 2H10a2 2 0 01-2-2V16z"/><circle cx="24" cy="26" r="6"/><path d="M4 20l4-4M44 20l-4-4M4 32l4 4M44 32l-4 4"/></svg>
-        <h3 class="sc-name">VR Experience</h3>
-        <p class="sc-desc">Experiências em realidade virtual para vendas e apresentações arquitetônicas. Coloque seu cliente dentro do projeto antes mesmo de existir.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- NAV -->
+    <nav id="nav">
+      <a href="#home" class="nav-logo">ELEVE <em>3D</em></a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">Studio</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#services">Serviços</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Orçamento</a>
+      <button class="hbg" id="hbg" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
 
-<!-- ABOUT -->
-<section id="about" style="background:var(--bg);border-top:1px solid var(--border);">
-  <div class="inner">
-    <div class="about-grid">
-      <div>
-        <div class="rev">
-          <span class="sec-label">Studio</span>
-          <h2 class="sec-title">Criamos experiências que <em>elevam</em> projetos.</h2>
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- HERO -->
+      <section id="home" class="hero">
+        <div class="hero-bg" id="heroBg">
+          <div class="hero-slide active" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_001.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_002.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_003.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_004.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_005.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_006.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_007.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_008.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_009.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_0010.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_0011.jpg')"></div>
+          <div class="hero-slide" style="background-image:url('images/Carrosel%20de%20imagens%20topo-20260521T172523Z-3-001/Carrosel%20de%20imagens%20topo/hero_0012.jpg')"></div>
         </div>
-        <div class="ab-div rev"></div>
-        <div class="ab-body rev">
-          <p>Nosso foco é combinar tecnologia, design e narrativa visual para transformar arquitetura em experiências memoráveis.</p>
-          <p>Atuamos com incorporadoras, arquitetos e construtoras que buscam apresentações de alto impacto — do conceito ao lançamento.</p>
-          <p>Cada projeto é tratado como uma obra única: entendemos o DNA do empreendimento e o traduzimos em imagens que vendem.</p>
-        </div>
-        <div class="ab-stats rev">
-          <div><div class="ab-stat-n">+200</div><div class="ab-stat-l">Projetos</div></div>
-          <div><div class="ab-stat-n">+8 anos</div><div class="ab-stat-l">de experiência</div></div>
-        </div>
-      </div>
-      <div class="ab-img-wrap rev d2">
-        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1400&auto=format&fit=crop" alt="Eleve 3D Studio">
-        <div class="ab-badge"><div class="big">Premium</div><div class="sm">Archviz Studio</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section style="background:var(--bg2);border-top:1px solid var(--border);">
-  <div class="inner">
-    <div class="rev">
-      <span class="sec-label">Depoimentos</span>
-      <h2 class="sec-title">O que nossos <em>clientes</em> dizem</h2>
-    </div>
-    <div class="test-grid">
-      <div class="tc rev">
-        <p class="tc-q">As imagens entregues pelo estúdio foram determinantes no lançamento. Vendemos 80% das unidades na pré-venda graças à qualidade das renderizações.</p>
-        <div class="tc-auth">
-          <div class="tc-av"><img src="https://i.pravatar.cc/100?img=11" alt="Carlos"></div>
-          <div><div class="tc-name">Carlos Mendes</div><div class="tc-role">CEO · Mendes Incorporações</div></div>
-        </div>
-      </div>
-      <div class="tc rev d1">
-        <p class="tc-q">Trabalhar com a Eleve 3D é uma experiência diferente. Eles entendem arquitetura de verdade. O resultado sempre supera o briefing.</p>
-        <div class="tc-auth">
-          <div class="tc-av"><img src="https://i.pravatar.cc/100?img=5" alt="Ana"></div>
-          <div><div class="tc-name">Ana Fonseca</div><div class="tc-role">Arquiteta · Fonseca Atelier</div></div>
-        </div>
-      </div>
-      <div class="tc rev d2">
-        <p class="tc-q">O walkthrough em Unreal Engine virou nosso principal argumento de vendas. Os clientes entram no apartamento antes de assinar o contrato.</p>
-        <div class="tc-auth">
-          <div class="tc-av"><img src="https://i.pravatar.cc/100?img=33" alt="Ricardo"></div>
-          <div><div class="tc-name">Ricardo Vaz</div><div class="tc-role">Diretor · VazGroup Realty</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-sec">
-  <div class="inner">
-    <span class="sec-label rev">Próximo Passo</span>
-    <h2 class="sec-title rev">Vamos transformar seu próximo projeto em uma <em>experiência visual premium.</em></h2>
-    <a href="#contact" class="btn-dark rev">Entrar em Contato</a>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" style="background:var(--bg);">
-  <div class="inner">
-    <div class="rev" style="margin-bottom:4rem;">
-      <span class="sec-label">Contato</span>
-      <h2 class="sec-title">Vamos <em>conversar</em>.</h2>
-    </div>
-    <div class="con-grid">
-      <div class="rev">
-        <p>Compartilhe seu projeto conosco. Analisamos, elaboramos uma proposta personalizada e juntos criamos algo extraordinário.</p>
-        <div class="con-items">
-          <a href="https://wa.me/5511999999999" class="con-item" target="_blank">
-            <div class="con-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
-            <div><div class="con-item-l">WhatsApp</div><div class="con-item-t">+55 (11) 99999-9999</div></div>
-          </a>
-          <a href="mailto:contato@eleve3d.com.br" class="con-item">
-            <div class="con-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
-            <div><div class="con-item-l">E-mail</div><div class="con-item-t">contato@eleve3d.com.br</div></div>
-          </a>
-          <a href="https://instagram.com/eleve3d" class="con-item" target="_blank">
-            <div class="con-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></div>
-            <div><div class="con-item-l">Instagram</div><div class="con-item-t">@eleve3d</div></div>
-          </a>
-        </div>
-      </div>
-      <div class="rev d2">
-        <form class="cf" onsubmit="submitForm(event)">
-          <div class="f-row">
-            <div class="fg-group"><label>Nome</label><input type="text" placeholder="Seu nome" required></div>
-            <div class="fg-group"><label>Telefone</label><input type="tel" placeholder="(11) 99999-9999"></div>
+        <div class="hero-ov"></div>
+        <div class="hero-c">
+          <h1 class="hero-h1">
+            Transformando arquitetura em
+            <em>experiências visuais</em> cinematográficas.
+          </h1>
+          <p class="hero-p">
+            Visualização arquitetônica, Imagens, Plantas, Vídeos, Tour 360º.
+            Experiências digitais para Arquitetura, Incorporação e Mercado
+            imobiliário.
+          </p>
+          <div class="hero-btns">
+            <a href="#portfolio" class="btn-w">Ver Projetos</a>
+            <a href="#contact" class="btn-o">Solicitar Orçamento</a>
           </div>
-          <div class="fg-group"><label>E-mail</label><input type="email" placeholder="seu@email.com" required></div>
-          <div class="fg-group"><label>Projeto</label><textarea rows="5" placeholder="Conte sobre seu projeto, localização, área, prazo..." required></textarea></div>
-          <button type="submit" class="sub-btn">Enviar Mensagem</button>
-        </form>
+        </div>
+        <div class="scroll-ind">
+          <div class="scroll-line"></div>
+          <span>Scroll</span>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <div class="stats-wrap">
+        <div class="stats-grid">
+          <div class="stat rev">
+            <span class="stat-n" data-count="200" data-prefix="+">0</span
+            ><span class="stat-l">Projetos Realizados</span>
+          </div>
+          <div class="stat rev d1">
+            <span class="stat-n" data-count="8" data-prefix="+">0</span
+            ><span class="stat-l">Anos de Mercado</span>
+          </div>
+          <div class="stat rev d2">
+            <span class="stat-n" data-count="50" data-prefix="+">0</span
+            ><span class="stat-l">Clientes Ativos</span>
+          </div>
+          <div class="stat rev d3">
+            <span class="stat-n" data-count="4">0</span
+            ><span class="stat-l">Países Atendidos</span>
+          </div>
+        </div>
       </div>
+
+      <!-- ABOUT -->
+      <section id="about" style="background: #b0b0b0; border-top: 1px solid var(--border)">
+        <div class="ab2-wrap">
+          <!-- Coluna foto -->
+          <div class="ab2-img rev">
+            <img
+              src="images/bruno.png"
+              alt="Equipe do Eleve 3D Studio trabalhando em projeto de visualização arquitetônica"
+            />
+          </div>
+          <!-- Coluna conteúdo -->
+          <div class="ab2-content">
+            <div class="rev">
+              <span class="ab2-eyebrow">Studio — desde 2015</span>
+              <h2 class="ab2-title">
+                Visualização <strong>arquitetônica</strong> de alto padrão.
+              </h2>
+            </div>
+            <div class="ab2-divider rev d1"></div>
+            <p class="ab2-lead rev d2">
+              Somos especialistas em transformar projetos arquitetônicos em imagens, animações e experiências interativas que comunicam com clareza e impactam quem vê.
+            </p>
+            <ul class="ab2-list rev d3">
+              <li><span class="ab2-dot"></span>Imagens 3D fotorrealistas</li>
+              <li><span class="ab2-dot"></span>Animações e filmes arquitetônicos</li>
+              <li><span class="ab2-dot"></span>Tour Virtual 360º e plataforma interativa</li>
+              <li><span class="ab2-dot"></span>Plantas humanizadas e isométricas</li>
+            </ul>
+            <div class="ab2-stats rev d4">
+              <div class="ab2-stat">
+                <span class="ab2-stat-n">+200</span>
+                <span class="ab2-stat-l">Projetos entregues</span>
+              </div>
+              <div class="ab2-stat">
+                <span class="ab2-stat-n">+8</span>
+                <span class="ab2-stat-l">Anos de mercado</span>
+              </div>
+              <div class="ab2-stat">
+                <span class="ab2-stat-n">4</span>
+                <span class="ab2-stat-l">Países atendidos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section id="portfolio" style="background: #2a2a2a; padding-bottom: 0">
+        <div class="inner" style="padding-bottom: 2.5rem">
+          <div class="port-header">
+            <div class="rev">
+              <span class="sec-label">Portfolio</span>
+              <h2 class="sec-title">Projetos em <em>Destaque</em></h2>
+            </div>
+            <div class="filters rev d1">
+              <button class="fb on" data-f="all">Todos</button>
+              <button class="fb" data-f="perspectivas">Perspectivas</button>
+              <button class="fb" data-f="filmes">Filmes</button>
+              <button class="fb" data-f="plantas">Plantas Isométricas</button>
+              <button class="fb" data-f="tour">Tour Virtual 360º</button>
+              <button class="fb" data-f="plataforma">Plataforma Interativa</button>
+            </div>
+          </div>
+        </div>
+        <div class="port-grid">
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid0.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid1.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="images/Grid2.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="images/Grid3.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid4.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid5.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="images/Grid6.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="images/Grid7.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid8.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid9.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="images/Grid10.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="images/Grid11.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid12.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid13.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="images/Grid14.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="images/Grid15.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid16.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid17.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="images/Grid18.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="images/Grid19.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid20.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid21.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="images/Grid22.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="images/Grid23.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid24.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid25.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="perspectivas"><img loading="lazy" src="images/Grid26.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="perspectivas"><img loading="lazy" src="images/Grid27.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="perspectivas"><img loading="lazy" src="images/Grid28.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="perspectivas"><img loading="lazy" src="images/Grid29.jpg" alt="Visualização arquitetônica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="filmes"><img loading="lazy" src="images/Grid30.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="filmes"><img loading="lazy" src="images/Grid31.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="filmes"><img loading="lazy" src="images/Grid32.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="filmes"><img loading="lazy" src="images/Grid33.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="filmes"><img loading="lazy" src="images/Grid34.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="filmes"><img loading="lazy" src="images/Grid35.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="filmes"><img loading="lazy" src="images/Grid36.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="filmes"><img loading="lazy" src="images/Grid37.jpg" alt="Animação e filme arquitetônico 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="plantas"><img loading="lazy" src="images/Grid38.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="plantas"><img loading="lazy" src="images/Grid39.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="plantas"><img loading="lazy" src="images/Grid40.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="plantas"><img loading="lazy" src="images/Grid41.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="plantas"><img loading="lazy" src="images/Grid42.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="plantas"><img loading="lazy" src="images/Grid43.jpg" alt="Planta isométrica 3D — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="tour"><img loading="lazy" src="images/Grid44.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev d1" data-cat="tour"><img loading="lazy" src="images/Grid45.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev d2" data-cat="tour"><img loading="lazy" src="images/Grid46.jpg" alt="Tour virtual 360º — Eleve 3D Studio" /></div>
+          <div class="pi rev d3" data-cat="plataforma"><img loading="lazy" src="images/Grid47.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
+          <div class="pi rev" data-cat="plataforma"><img loading="lazy" src="images/Grid48.jpg" alt="Plataforma interativa — Eleve 3D Studio" /></div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section
+        id="services"
+        style="background: #2a2a2a; border-top: 1px solid var(--border)"
+      >
+        <div class="inner">
+          <div class="srv-header">
+            <div class="rev">
+              <span class="sec-label">Serviços</span>
+              <h2 class="sec-title">O que <em>fazemos</em></h2>
+            </div>
+            <p
+              class="rev d1"
+              style="color: var(--fg2); line-height: 1.7; font-size: 1.02rem"
+            >
+              Combinamos tecnologia de ponta com sensibilidade artística para
+              entregar visualizações que impressionam e vendem.
+            </p>
+          </div>
+          <div class="srv-grid">
+            <div class="sc-card rev" data-filter="perspectivas" role="button" tabindex="0" style="cursor:pointer">
+              <div class="sc-num">01</div>
+              <svg
+                class="sc-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="4" y="8" width="40" height="28" rx="2" />
+                <path d="M16 40h16M24 36v4" />
+                <circle cx="24" cy="22" r="6" />
+                <path d="M4 28l8-8 6 6 8-10 8 8" />
+              </svg>
+              <h3 class="sc-name">Perspectivas</h3>
+              <p class="sc-desc">
+                As perspectivas arquitetônicas são imagens renderizadas que
+                representam o projeto de forma realista e detalhada, seja em
+                ambientes internos ou externos, em cenários diurnos ou noturnos.
+              </p>
+            </div>
+            <div class="sc-card rev d1" data-filter="filmes" role="button" tabindex="0" style="cursor:pointer">
+              <div class="sc-num">02</div>
+              <svg
+                class="sc-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="24" cy="24" r="18" />
+                <polygon
+                  points="20,16 20,32 34,24"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+              <h3 class="sc-name">Filmes</h3>
+              <p class="sc-desc">
+                Animações cinematográficas para empreendimentos imobiliários e
+                arquitetura. Narrativas visuais que conectam emocionalmente com
+                o comprador.
+              </p>
+            </div>
+            <div class="sc-card rev d2" data-filter="plantas" role="button" tabindex="0" style="cursor:pointer">
+              <div class="sc-num">03</div>
+              <svg
+                class="sc-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M6 24L24 8l18 16v16a2 2 0 01-2 2H8a2 2 0 01-2-2V24z" />
+                <rect x="18" y="30" width="12" height="12" />
+                <path d="M24 12v6M14 18h4M30 18h4" />
+              </svg>
+              <h3 class="sc-name">Plantas Isométricas</h3>
+              <p class="sc-desc">
+                As plantas isométricas, ou plantas em perspectiva, apresentam o
+                projeto de forma tridimensional, unindo clareza técnica e
+                leitura espacial.
+              </p>
+            </div>
+            <div class="sc-card rev d3" data-filter="tour" role="button" tabindex="0" style="cursor:pointer">
+              <div class="sc-num">04</div>
+              <svg
+                class="sc-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M8 16a2 2 0 012-2h28a2 2 0 012 2v20a2 2 0 01-2 2H10a2 2 0 01-2-2V16z"
+                />
+                <circle cx="24" cy="26" r="6" />
+                <path d="M4 20l4-4M44 20l-4-4M4 32l4 4M44 32l-4 4" />
+              </svg>
+              <h3 class="sc-name">Tour Virtual 360º</h3>
+              <p class="sc-desc">
+                Também oferecemos o Tour Virtual, uma solução imersiva que
+                permite ao cliente ou observador explorar de forma livre o
+                ambiente renderizado em 360 graus.
+              </p>
+            </div>
+            <div class="sc-card rev d4" data-filter="plataforma" role="button" tabindex="0" style="cursor:pointer">
+              <div class="sc-num">05</div>
+              <svg
+                class="sc-icon"
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="4" y="6" width="40" height="28" rx="3" />
+                <path d="M16 42h16M24 34v8" />
+                <path d="M12 18h8M12 24h6" />
+                <rect x="26" y="16" width="12" height="10" rx="1" />
+                <circle
+                  cx="32"
+                  cy="21"
+                  r="2"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+              <h3 class="sc-name">Plataforma Interativa</h3>
+              <p class="sc-desc">
+                Em um único ambiente digital, uma experiência completa e
+                integrada de apresentação. Nela, o projeto é explorado por meio
+                de Tour Virtual 360º, galeria de imagens, plantas humanizadas e
+                informações detalhadas do empreendimento. Essa solução amplia o
+                engajamento, facilita a compreensão do projeto e fortalece sua
+                comunicação comercial.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section
+        style="background: var(--bg2); border-top: 1px solid var(--border)"
+      >
+        <div class="inner">
+          <div class="rev">
+            <span class="sec-label">Depoimentos</span>
+            <h2 class="sec-title">O que nossos <em>clientes</em> dizem</h2>
+          </div>
+          <div class="test-grid">
+            <div class="tc rev">
+              <p class="tc-q">
+                As imagens entregues pelo estúdio foram determinantes no
+                lançamento. Vendemos 80% das unidades na pré-venda graças à
+                qualidade das renderizações.
+              </p>
+              <div class="tc-auth">
+                <div class="tc-av">
+                  <img src="https://i.pravatar.cc/100?img=11" alt="Carlos" />
+                </div>
+                <div>
+                  <div class="tc-name">Carlos Mendes</div>
+                  <div class="tc-role">CEO · Mendes Incorporações</div>
+                </div>
+              </div>
+            </div>
+            <div class="tc rev d1">
+              <p class="tc-q">
+                Trabalhar com a Eleve 3D é uma experiência diferente. Eles
+                entendem arquitetura de verdade. O resultado sempre supera o
+                briefing.
+              </p>
+              <div class="tc-auth">
+                <div class="tc-av">
+                  <img src="https://i.pravatar.cc/100?img=5" alt="Ana" />
+                </div>
+                <div>
+                  <div class="tc-name">Ana Fonseca</div>
+                  <div class="tc-role">Arquiteta · Fonseca Atelier</div>
+                </div>
+              </div>
+            </div>
+            <div class="tc rev d2">
+              <p class="tc-q">
+                O walkthrough em Unreal Engine virou nosso principal argumento
+                de vendas. Os clientes entram no apartamento antes de assinar o
+                contrato.
+              </p>
+              <div class="tc-auth">
+                <div class="tc-av">
+                  <img src="https://i.pravatar.cc/100?img=33" alt="Ricardo" />
+                </div>
+                <div>
+                  <div class="tc-name">Ricardo Vaz</div>
+                  <div class="tc-role">Diretor · VazGroup Realty</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-sec">
+        <div class="inner">
+          <span class="sec-label rev">Próximo Passo</span>
+          <h2 class="sec-title rev">
+            Vamos transformar seu próximo projeto em uma
+            <em>experiência visual premium.</em>
+          </h2>
+          <a href="#contact" class="btn-dark rev">Entrar em Contato</a>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" style="background: var(--bg)">
+        <div class="inner">
+          <div class="rev" style="margin-bottom: 1.5rem">
+            <span class="sec-label">Contato</span>
+            <h2 class="sec-title">Vamos <em>conversar</em>.</h2>
+          </div>
+          <div class="con-grid">
+            <div class="rev">
+              <p style="margin-bottom: 2.5rem">
+                Se você busca imagens que valorizem seu projeto e comuniquem
+                suas ideias com clareza e qualidade, entre em contato conosco.
+                Estamos prontos para atender cada demanda com cuidado, precisão
+                e alto padrão de entrega.
+              </p>
+              <div class="con-items">
+                <a
+                  href="https://wa.me/554134940227"
+                  class="con-item"
+                  target="_blank"
+                >
+                  <div class="con-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="con-item-l">WhatsApp</div>
+                    <div class="con-item-t">+55 (41) 3494-0227</div>
+                  </div>
+                </a>
+                <a href="mailto:contato@eleve3d.com.br" class="con-item">
+                  <div class="con-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="con-item-l">E-mail</div>
+                    <div class="con-item-t">contato@eleve3d.com.br</div>
+                  </div>
+                </a>
+                <a
+                  href="https://www.instagram.com/eleve3d/?hl=pt-br"
+                  class="con-item"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <div class="con-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" />
+                      <circle cx="12" cy="12" r="4" />
+                      <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="con-item-l">Instagram</div>
+                    <div class="con-item-t">@eleve3d</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="rev d2">
+              <form class="cf" onsubmit="submitForm(event)">
+                <div class="f-row">
+                  <div class="fg-group">
+                    <label>Nome</label
+                    ><input type="text" placeholder="Seu nome" required />
+                  </div>
+                  <div class="fg-group">
+                    <label>Telefone</label
+                    ><input type="tel" placeholder="(11) 99999-9999" />
+                  </div>
+                </div>
+                <div class="fg-group">
+                  <label>E-mail</label
+                  ><input type="email" placeholder="seu@email.com" required />
+                </div>
+                <div class="fg-group">
+                  <label>Projeto</label
+                  ><textarea
+                    rows="5"
+                    placeholder="Conte sobre seu projeto, localização, área, prazo..."
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="sub-btn">Enviar Mensagem</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- LIGHTBOX -->
+    <div id="lb" role="dialog" aria-modal="true" aria-label="Visualizar imagem">
+      <div class="lb-backdrop" id="lbBackdrop"></div>
+      <button class="lb-close" id="lbClose" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <img id="lbImg" src="" alt="" />
     </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="ft-inner">
-    <div class="ft-top">
-      <div>
-        <div class="ft-brand">ELEVE 3D</div>
-        <p class="ft-desc">Estúdio de visualização arquitetônica premium. Transformamos projetos em experiências visuais cinematográficas.</p>
+    <!-- FOOTER -->
+    <footer>
+      <div class="ft-inner">
+        <div class="ft-top">
+          <div>
+            <div class="ft-brand">ELEVE <em style="font-style:normal;color:var(--yellow)">3D</em></div>
+            <p class="ft-desc">
+              Estúdio de visualização arquitetônica premium. Transformamos
+              projetos em experiências visuais cinematográficas.
+            </p>
+          </div>
+          <div>
+            <div class="ft-col-t">Navegação</div>
+            <ul class="ft-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">Studio</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#services">Serviços</a></li>
+              <li><a href="#contact">Contato</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="ft-col-t">Serviços</div>
+            <ul class="ft-links">
+              <li><a href="#services">Imagens 3D</a></li>
+              <li><a href="#services">Filmes</a></li>
+              <li><a href="#services">Realtime</a></li>
+              <li><a href="#services">VR Experience</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="ft-col-t">Contato</div>
+            <ul class="ft-links">
+              <li>
+                <a href="mailto:contato@eleve3d.com.br"
+                  >contato@eleve3d.com.br</a
+                >
+              </li>
+              <li><a href="https://wa.me/554134940227">WhatsApp</a></li>
+              <li><a href="#">Curitiba, PR — Brasil</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="ft-bot">
+          <div class="ft-copy">
+            © 2026 Eleve 3D Studio — Todos os direitos reservados
+          </div>
+          <div class="socials">
+            <a
+              href="https://www.instagram.com/eleve3d/?hl=pt-br"
+              class="soc"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                /></svg
+            ></a>
+            <a
+              href="https://www.facebook.com/eleve3d"
+              class="soc"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                /></svg
+            ></a>
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="ft-col-t">Navegação</div>
-        <ul class="ft-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#services">Serviços</a></li>
-          <li><a href="#about">Studio</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="ft-col-t">Serviços</div>
-        <ul class="ft-links">
-          <li><a href="#services">Imagens 3D</a></li>
-          <li><a href="#services">Filmes</a></li>
-          <li><a href="#services">Realtime</a></li>
-          <li><a href="#services">VR Experience</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="ft-col-t">Contato</div>
-        <ul class="ft-links">
-          <li><a href="mailto:contato@eleve3d.com.br">contato@eleve3d.com.br</a></li>
-          <li><a href="https://wa.me/5511999999999">WhatsApp</a></li>
-          <li><a href="#">São Paulo, SP — Brasil</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="ft-bot">
-      <div class="ft-copy">© 2026 Eleve 3D Studio — Todos os direitos reservados</div>
-      <div class="socials">
-        <a href="#" class="soc" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="#" class="soc" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-        <a href="#" class="soc" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg></a>
-        <a href="#" class="soc" aria-label="Behance"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M7.8 5.7c.6 0 1.1.05 1.6.16.5.1.9.27 1.24.51.35.24.61.55.8.94.19.39.28.87.28 1.44 0 .62-.14 1.14-.42 1.55-.28.41-.7.75-1.26 1.01.76.22 1.32.6 1.69 1.15.37.54.55 1.2.55 1.98 0 .62-.12 1.16-.36 1.61-.24.45-.57.82-.99 1.1-.42.29-.91.5-1.46.63-.55.13-1.12.2-1.71.2H0V5.7h7.8zM7.35 10.4c.48 0 .88-.11 1.19-.34.31-.23.47-.59.47-1.09 0-.27-.05-.5-.15-.67-.1-.18-.23-.32-.4-.43a1.7 1.7 0 00-.58-.23 3.3 3.3 0 00-.7-.07H2.74v2.83h4.61zm.21 4.93c.26 0 .51-.03.75-.08.23-.05.44-.13.61-.25.18-.12.32-.27.42-.46.1-.19.16-.42.16-.71 0-.56-.16-.97-.48-1.23-.32-.26-.76-.39-1.31-.39H2.74v3.12h4.82zm9.17.9c.37.36.9.54 1.59.54.49 0 .92-.12 1.28-.37.36-.25.57-.51.66-.8h2.35c-.38 1.17-.95 2.01-1.73 2.51-.77.51-1.7.76-2.8.76-.76 0-1.44-.12-2.05-.37a4.46 4.46 0 01-1.56-1.03 4.6 4.6 0 01-1-1.59c-.23-.61-.35-1.28-.35-2.01 0-.7.12-1.36.36-1.97a4.6 4.6 0 011-1.57 4.6 4.6 0 011.56-1.03c.6-.25 1.26-.37 1.98-.37.81 0 1.52.16 2.13.47a4.2 4.2 0 011.48 1.27c.39.53.67 1.15.84 1.84.17.7.23 1.43.18 2.21h-7c.04.77.25 1.35.62 1.71zm2.8-4.62c-.29-.32-.76-.48-1.39-.48-.4 0-.73.07-.99.2a2 2 0 00-.65.5 1.93 1.93 0 00-.35.68c-.07.24-.11.47-.12.71h4.16c-.1-.66-.37-1.29-.66-1.61zm-3.22-5.04h5.04V8h-5.04V6.57z"/></svg></a>
-      </div>
-    </div>
-  </div>
-</footer>
+    </footer>
 
-<script>
-// LOADER
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('out');
-    document.getElementById('heroBg').classList.add('go');
-  }, 2300);
-});
+    <script>
+      const slides = document.querySelectorAll(".hero-slide");
+      let curSlide = 0;
+      setInterval(() => {
+        slides[curSlide].classList.remove("active");
+        curSlide = (curSlide + 1) % slides.length;
+        slides[curSlide].classList.add("active");
+      }, 5000);
 
-// CURSOR
-const dot = document.getElementById('cur-dot');
-const ring = document.getElementById('cur-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx+'px'; dot.style.top = my+'px'; });
-(function loop(){ rx += (mx-rx)*.12; ry += (my-ry)*.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(loop); })();
-document.querySelectorAll('a,button,.pi,.sc-card,.fb,.tc').forEach(el => {
-  el.addEventListener('mouseenter', () => document.body.classList.add('ch'));
-  el.addEventListener('mouseleave', () => document.body.classList.remove('ch'));
-});
+      // CURSOR
+      const dot = document.getElementById("cur-dot");
+      const ring = document.getElementById("cur-ring");
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        dot.style.left = mx + "px";
+        dot.style.top = my + "px";
+      });
+      (function loop() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(loop);
+      })();
+      document
+        .querySelectorAll("a,button,.pi,.sc-card,.fb,.tc")
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () =>
+            document.body.classList.add("ch"),
+          );
+          el.addEventListener("mouseleave", () =>
+            document.body.classList.remove("ch"),
+          );
+        });
 
-// NAVBAR SCROLL
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 50));
+      // NAVBAR SCROLL
+      const nav = document.getElementById("nav");
+      window.addEventListener("scroll", () =>
+        nav.classList.toggle("sc", scrollY > 50),
+      );
 
-// HAMBURGER
-const hbg = document.getElementById('hbg');
-const mob = document.getElementById('mob');
-hbg.addEventListener('click', () => {
-  hbg.classList.toggle('on');
-  mob.classList.toggle('on');
-  document.body.style.overflow = mob.classList.contains('on') ? 'hidden' : '';
-});
-function closeM() {
-  hbg.classList.remove('on');
-  mob.classList.remove('on');
-  document.body.style.overflow = '';
-}
+      // HAMBURGER
+      const hbg = document.getElementById("hbg");
+      const mob = document.getElementById("mob");
+      hbg.addEventListener("click", () => {
+        hbg.classList.toggle("on");
+        mob.classList.toggle("on");
+        document.body.style.overflow = mob.classList.contains("on")
+          ? "hidden"
+          : "";
+      });
+      function closeM() {
+        hbg.classList.remove("on");
+        mob.classList.remove("on");
+        document.body.style.overflow = "";
+      }
 
-// SCROLL REVEAL
-const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); }), {threshold:.1});
-document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+      // SCROLL REVEAL
+      const obs = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("vis");
+          }),
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".rev").forEach((el) => obs.observe(el));
 
-// COUNTER
-function countUp(el) {
-  const t = +el.dataset.count, pre = el.dataset.prefix||'', dur = 1800, step = t/(dur/16);
-  let c = 0;
-  const go = () => { c = Math.min(c+step,t); el.textContent = pre+Math.floor(c); if(c<t) requestAnimationFrame(go); else el.textContent = pre+t; };
-  go();
-}
-const cObs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ countUp(e.target); cObs.unobserve(e.target); } }), {threshold:.5});
-document.querySelectorAll('[data-count]').forEach(el => cObs.observe(el));
+      // COUNTER
+      function countUp(el) {
+        const t = +el.dataset.count,
+          pre = el.dataset.prefix || "",
+          dur = 1800,
+          step = t / (dur / 16);
+        let c = 0;
+        const go = () => {
+          c = Math.min(c + step, t);
+          el.textContent = pre + Math.floor(c);
+          if (c < t) requestAnimationFrame(go);
+          else el.textContent = pre + t;
+        };
+        go();
+      }
+      const cObs = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              countUp(e.target);
+              cObs.unobserve(e.target);
+            }
+          }),
+        { threshold: 0.5 },
+      );
+      document
+        .querySelectorAll("[data-count]")
+        .forEach((el) => cObs.observe(el));
 
-// PORTFOLIO FILTER
-document.querySelectorAll('.fb').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.fb').forEach(b => b.classList.remove('on'));
-    btn.classList.add('on');
-    const f = btn.dataset.f;
-    document.querySelectorAll('.pi').forEach(pi => {
-      const show = f==='all' || pi.dataset.cat===f;
-      pi.style.transition = 'opacity .4s, transform .4s';
-      pi.style.opacity = show ? '1' : '0.15';
-      pi.style.transform = show ? 'scale(1)' : 'scale(.97)';
-      pi.style.pointerEvents = show ? '' : 'none';
-    });
-  });
-});
+      // PORTFOLIO FILTER
+      function applyFilter(f) {
+        document.querySelectorAll(".fb").forEach((b) => b.classList.remove("on"));
+        const target = document.querySelector(`.fb[data-f="${f}"]`);
+        if (target) target.classList.add("on");
+        document.querySelectorAll(".pi").forEach((pi) => {
+          const show = f === "all" || pi.dataset.cat === f;
+          pi.style.transition = "opacity .4s, transform .4s";
+          pi.style.opacity = show ? "1" : "0.15";
+          pi.style.transform = show ? "scale(1)" : "scale(.97)";
+          pi.style.pointerEvents = show ? "" : "none";
+        });
+      }
 
-// SMOOTH SCROLL
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
-  });
-});
+      document.querySelectorAll(".fb").forEach((btn) => {
+        btn.addEventListener("click", () => applyFilter(btn.dataset.f));
+      });
 
-// FORM
-function submitForm(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('.sub-btn');
-  btn.textContent = 'Mensagem Enviada ✓';
-  btn.style.cssText = 'background:#1a1a1a;color:#fff;border:1px solid #333';
-  setTimeout(() => { btn.textContent = 'Enviar Mensagem'; btn.style.cssText = ''; e.target.reset(); }, 3500);
-}
-</script>
-</body>
+      // SERVICE CARDS → PORTFOLIO
+      document.querySelectorAll(".sc-card[data-filter]").forEach((card) => {
+        const activate = () => {
+          const f = card.dataset.filter;
+          document.getElementById("portfolio").scrollIntoView({ behavior: "smooth" });
+          setTimeout(() => applyFilter(f), 600);
+        };
+        card.addEventListener("click", activate);
+        card.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") activate(); });
+      });
+
+      // SMOOTH SCROLL
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const t = document.querySelector(a.getAttribute("href"));
+          if (t) {
+            e.preventDefault();
+            t.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // FORM
+      function submitForm(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector(".sub-btn");
+        btn.textContent = "Mensagem Enviada ✓";
+        btn.style.cssText =
+          "background:#1a1a1a;color:#fff;border:1px solid #333";
+        setTimeout(() => {
+          btn.textContent = "Enviar Mensagem";
+          btn.style.cssText = "";
+          e.target.reset();
+        }, 3500);
+      }
+
+      // LIGHTBOX
+      (function () {
+        const lb       = document.getElementById("lb");
+        const lbImg    = document.getElementById("lbImg");
+        const backdrop = document.getElementById("lbBackdrop");
+
+        function open(src, alt) {
+          lbImg.src = src;
+          lbImg.alt = alt;
+          lb.classList.add("on");
+          document.body.style.overflow = "hidden";
+        }
+
+        function close() {
+          lb.classList.remove("on");
+          document.body.style.overflow = "";
+        }
+
+        document.querySelectorAll(".pi").forEach(pi => {
+          const img = pi.querySelector("img");
+          pi.addEventListener("click", () => open(img.src, img.alt));
+        });
+
+        document.getElementById("lbClose").addEventListener("click", close);
+        backdrop.addEventListener("click", close);
+        document.addEventListener("keydown", e => {
+          if (e.key === "Escape" && lb.classList.contains("on")) close();
+        });
+      })();
+    </script>
+  </body>
 </html>
